@@ -1,46 +1,46 @@
 //
-//  SearchViewController.swift
+//  RecipesViewController.swift
 //  reciplease
 //
-//  Created by Paul Ghibeaux on 16/09/2021.
+//  Created by Paul Ghibeaux on 17/09/2021.
 //
 
 import UIKit
 
-class SearchViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
+class RecipesViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
+        
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var recipestableView: UITableView!
     
     var viewModel: ViewModel?
 
+    
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
-        super.init(nibName: "SearchViewController", bundle: nil)
+        super.init(nibName: "RecipesViewController", bundle: nil)
     }
-    
-   
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-
     }
      
     override func viewDidLoad() {
         
         super.viewDidLoad()
-       
-        tableView.delegate = self
-        tableView.backgroundColor = .darkGray
-        tableView.dataSource = self
+        view.backgroundColor = .black
+        recipestableView.delegate = self
+        recipestableView.backgroundColor = .darkGray
+        recipestableView.dataSource = self
         self.navigationItem.title = "Reciplease";
 
         self.viewModel?.loadData {
             
             self.registerCells()
-            self.tableView.reloadData()
+            self.recipestableView.reloadData()
         }
     }
     
+   
     
     // MARK: - Register
     public func registerCells() {
@@ -63,7 +63,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UINavigationC
                 
                 // If we don't have a nibName, we use the default UITableViewCell
                 guard let nibName = item.nibName else {
-                    tableView.register(UITableViewCell.self,
+                    recipestableView.register(UITableViewCell.self,
                                        forCellReuseIdentifier: item.reuseIdentifier)
                     continue
                 }
@@ -72,16 +72,19 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UINavigationC
                 // Otherwise we use the one from the xib
                 let nib = UINib(nibName: nibName,
                                 bundle: Bundle(for: type(of: item)))
-                self.tableView.register(nib,
+                self.recipestableView.register(nib,
                                         forCellReuseIdentifier: item.reuseIdentifier)
             }
                         
         }
     }
+    
+    
 }
 
 
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+extension RecipesViewController : UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         guard let vm = self.viewModel else {
             return 0
@@ -135,4 +138,28 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         return CGFloat(cellVM.height)
     }
+    
+  
+
 }
+
+
+extension RecipesViewController {
+    
+    public func presentAlert(with error: String){
+        let alertVC = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertVC.addAction(action)
+        present(alertVC, animated: true, completion: nil)
+    }
+    
+    public func presentAlertSuccess(with success: String){
+        let alertVC = UIAlertController(title: "Success", message: success, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertVC.addAction(action)
+        present(alertVC, animated: true, completion: nil)
+    }
+}
+
+
+

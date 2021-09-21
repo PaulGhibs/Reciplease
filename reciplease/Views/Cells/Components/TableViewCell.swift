@@ -1,27 +1,18 @@
 //
 //  TableViewCell.swift
-//  reciplease
+//  BassGears
 //
-//  Created by Paul Ghibeaux on 14/09/2021.
+//  Created by Florian Basso on 23/08/2021.
 //
 
 import UIKit
 
+// Example to configure a cell from a xib
+
 class TableViewCell: UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    
+ 
     override func configure(cellViewModel: CellViewModel, from controller: UIViewController) {
         
         guard let tableCVM = cellViewModel as? SearchCellViewModel else {
@@ -30,5 +21,10 @@ class TableViewCell: UITableViewCell {
         
         self.label.text = tableCVM.name
     }
+    
+    override func cellPressed(cellViewModel: CellViewModel, from controller: UIViewController) {
+        // Do something if needed
+       
+    }        
     
 }

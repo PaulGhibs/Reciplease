@@ -9,27 +9,18 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .lightGray
+        self.tabBar.tintColor = UIColor.white
+        tabBar.unselectedItemTintColor = UIColor.lightGray
         let appearance = UITabBarItem.appearance()
-        let attributes = [NSAttributedString.Key.font:UIFont(name: "Chalkduster", size: 25)]
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Chalkduster", size: 10)]
         appearance.setTitleTextAttributes(attributes as [NSAttributedString.Key : Any], for: .normal)
-        
-        let vc2 = SearchViewController()
-        let vc3 = FavoriteViewController()
-        
-        let nav2 = UINavigationController(rootViewController: vc2)
-        let nav3 = UINavigationController(rootViewController: vc3)
 
-        nav2.tabBarItem.title = "Search"
-        nav3.tabBarItem.title = "Favorite"
-        
-        nav2.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -15)
-        nav3.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -15)
-
-
+           setupVCs()
+   
         if let items = self.tabBar.items {
 
         //Get the height of the tab bar
@@ -58,23 +49,36 @@ class TabBarViewController: UITabBarController {
         view a background color
         */
         let separator = UIView(frame: CGRect(
-        x: xPosition, y: 0, width: 1, height: height+10))
-        separator.backgroundColor = UIColor.gray
+        x: xPosition, y: 0, width: 0.5, height: height))
+        separator.backgroundColor = UIColor.white
         tabBar.insertSubview(separator, at: 1)
         }
         }
         }
-        
-      
-        
-        
-    
-
-   
-        setViewControllers([nav2, nav3], animated: false)
-   
-        
     }
     
+   
+    
+    
+    func setupVCs() {
+            viewControllers = [
+                createNavController(for: SearchViewController(viewModel: SearchViewModel()), title: NSLocalizedString("Search", comment: ""), image: UIImage(systemName: "magnifyingglass")!),
+                createNavController(for: FavoriteViewController(), title: NSLocalizedString("Favorite", comment: ""), image: UIImage(systemName: "suit.heart")!),
+                
+            ]
+        }
+    
+    
+    fileprivate func createNavController(for rootViewController: UIViewController,
+                                                     title: String,
+                                                     image: UIImage) -> UIViewController {
+           let navController = UINavigationController(rootViewController: rootViewController)
+           navController.tabBarItem.title = title
+           navController.tabBarItem.image = image
+           rootViewController.navigationItem.title = title
+           return navController
+       }
 
 }
+
+

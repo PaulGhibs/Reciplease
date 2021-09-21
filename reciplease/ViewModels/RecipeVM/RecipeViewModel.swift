@@ -10,9 +10,9 @@ import Foundation
 
 class RecipeViewModel : ViewModel {
     var sections: [Section] = []
-    
+
     func loadData(callback: () -> ()) {
-        self.sections.append(recipeViewSection())
+        self.sections.append(RecipeViewSection())
         callback()
     }
     

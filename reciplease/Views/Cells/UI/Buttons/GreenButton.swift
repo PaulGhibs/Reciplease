@@ -1,0 +1,50 @@
+//
+//  GreenButton.swift
+//  reciplease
+//
+//  Created by Paul Ghibeaux on 15/09/2021.
+//
+
+import UIKit
+
+let cellIdentifier = "GreenButton"
+
+class GreenButton: UITableViewCell {
+
+    @IBOutlet weak var greenButton: UIButton!
+    
+    
+        override func cellPressed(cellViewModel: CellViewModel, from controller: UIViewController) {
+       
+       
+
+        guard let routingEntry = cellViewModel.routingEntry,
+              let navController = controller.navigationController else {
+            print("need to implement")
+            return
+        }
+        let newRouting = Routing()
+        let navStyle = PushNavigationStyle(fromNVC: navController,
+                                           routingEntry: routingEntry)
+        
+        _ = newRouting
+            .route(navigationStyle: navStyle,
+                   animated: true)
+
+    }
+    
+    override func configure(cellViewModel : CellViewModel, from controller: UIViewController) {
+       
+        guard let tableCVM = cellViewModel as? GreenButtonCellViewModel else {
+            return
+        }
+        
+        
+        greenButton.setTitle(tableCVM.title, for: .normal)
+        greenButton.layer.cornerRadius = 20
+        
+
+    
+}
+
+}

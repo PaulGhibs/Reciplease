@@ -8,8 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BasicTableViewController" customModule="reciplease" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecipesViewController" customModule="reciplease" customModuleProvider="target">
             <connections>
+                <outlet property="recipestableView" destination="i5M-Pr-FkT" id="xBj-pc-DKQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,7 +24,7 @@
                 <outlet property="dataSource" destination="-1" id="Tng-2m-Rnh"/>
                 <outlet property="delegate" destination="-1" id="9aC-8N-iBw"/>
             </connections>
-            <point key="canvasLocation" x="139" y="120"/>
+            <point key="canvasLocation" x="67" y="66"/>
         </tableView>
     </objects>
     <resources>

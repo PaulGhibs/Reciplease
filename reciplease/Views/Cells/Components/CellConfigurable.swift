@@ -22,11 +22,9 @@ extension UITableViewCell: CellConfigurable {
     }
     
     func configure(cellViewModel: CellViewModel, from controller: UIViewController) {
-        guard let tableCVM = cellViewModel as? RecipeCellViewModel else {
-            return
-        }
         
-        self.textLabel?.text = tableCVM.name
     }
+        
+    
     
 }

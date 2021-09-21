@@ -11,9 +11,11 @@ import Foundation
     var nibName: String? { get set }
     var reuseIdentifier: String { get set }
     var indexPath: IndexPath? { get set }
+    var routingEntry: RoutingEntry? { get set }
+
 }
 
 protocol TableCellViewModel: CellViewModel {
     var height: Float { get }
-    var estimatedHeight: Float { get }
+
 }

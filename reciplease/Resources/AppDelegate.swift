@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = .darkGray
-        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().isTranslucent = true
+        
            UINavigationBar.appearance().clipsToBounds = false
         UINavigationBar.appearance().backgroundColor = .darkGray
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font : (UIFont(name: "Chalkduster", size: 25))!, NSAttributedString.Key.foregroundColor: UIColor.white]

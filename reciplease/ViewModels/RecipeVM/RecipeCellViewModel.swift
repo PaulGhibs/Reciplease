@@ -8,6 +8,10 @@
 import Foundation
 
 class RecipeCellViewModel: TableCellViewModel {
+    var routingEntry: RoutingEntry?
+    
+    
+    
     var estimatedHeight: Float {
         return 50
     }
@@ -17,7 +21,7 @@ class RecipeCellViewModel: TableCellViewModel {
     }
     
     var indexPath: IndexPath?
-    var nibName: String? = "TableViewCell"
+    var nibName: String? = "RecipeViewCell"
     lazy var reuseIdentifier: String = String(describing: self)
     var name: String
     

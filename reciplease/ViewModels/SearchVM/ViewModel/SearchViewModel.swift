@@ -9,7 +9,7 @@ import Foundation
 
 class SearchViewModel: ViewModel {
     var sections: [Section] = []
-    
+
     func loadData(callback: () -> ()) {
         self.sections.append(SearchSection())
         callback()

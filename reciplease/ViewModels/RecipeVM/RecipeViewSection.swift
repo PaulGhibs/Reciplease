@@ -8,7 +8,7 @@
 import Foundation
 
 
-class recipeViewSection: Section {
+class RecipeViewSection: Section {
     var position: Int
     
     var title: String
@@ -18,7 +18,7 @@ class recipeViewSection: Section {
     init() {
         self.position = 0
         self.title = ""
-        
+
         self.cellsVM = [CellViewModel]()
         self.cellsVM.append(RecipeCellViewModel(name: "Numéro "))
 
