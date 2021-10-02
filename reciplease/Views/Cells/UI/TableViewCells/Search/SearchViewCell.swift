@@ -38,7 +38,7 @@ class SearchViewCell: UITableViewCell {
         super.layoutSubviews()
         contentView.layer.cornerRadius = 15
        
-        addbutton.layer.cornerRadius = 20
+        addbutton.layer.cornerRadius = 2
         
     }
     

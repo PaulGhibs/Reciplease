@@ -20,143 +20,80 @@
 //   }
 
 import Foundation
-import Alamofire
 
-// MARK: - Welcome
-struct Welcome: Codable {
-    let q: String
-    let from, to: Int
-    let more: Bool
-    let count: Int
-    let hits: [Hit]
-}
-
-//
-// To parse values from Alamofire responses:
-//
-//   Alamofire.request(url).responseHit { response in
-//     if let hit = response.result.value {
-//       ...
-//     }
-//   }
-
-// MARK: - Hit
-struct Hit: Codable {
-    let recipe: Recipe
-}
-
-//
-// To parse values from Alamofire responses:
-//
-//   Alamofire.request(url).responseRecipe { response in
-//     if let recipe = response.result.value {
-//       ...
-//     }
-//   }
-
-// MARK: - Recipe
-struct Recipe: Codable {
-    let uri: String
-    let label: String
-    let image: String
-    let source: String
-    let url: String
-    let shareAs: String
-    let yield: Int
-    let dietLabels, healthLabels, cautions, ingredientLines: [String]
-    let ingredients: [Ingredient]
-    let calories, totalWeight: Double
-    let totalTime: Int
-    let cuisineType, mealType, dishType: [String]
-    let totalNutrients, totalDaily: [String: Total]
-    let digest: [Digest]
-}
-
-//
-// To parse values from Alamofire responses:
-//
-//   Alamofire.request(url).responseDigest { response in
-//     if let digest = response.result.value {
-//       ...
-//     }
-//   }
-
-// MARK: - Digest
-struct Digest: Codable {
-    let label, tag: String
-    let schemaOrgTag: String?
-    let total: Double
-    let hasRDI: Bool
-    let daily: Double
-    let unit: Unit
-    let sub: [Digest]?
-}
-
-enum Unit: String, Codable {
-    case empty = "%"
-    case g = "g"
-    case kcal = "kcal"
-    case mg = "mg"
-    case µg = "µg"
-}
-
-//
-// To parse values from Alamofire responses:
-//
-//   Alamofire.request(url).responseIngredient { response in
-//     if let ingredient = response.result.value {
-//       ...
-//     }
-//   }
-
-// MARK: - Ingredient
-struct Ingredient: Codable {
-    let text: String
-    let quantity: Double
-    let measure: String?
-    let food: String
-    let weight: Double
-    let foodCategory, foodID: String
-    let image: String
+struct RecipeResponse: Decodable {
+    let recipes: [Recipe]
 
     enum CodingKeys: String, CodingKey {
-        case text, quantity, measure, food, weight, foodCategory
-        case foodID = "foodId"
-        case image
+        case recipes = "hits"
+    }
+}
+struct Recipe {
+    let name: String
+    let imageURL: String?
+    let url: String?
+    let numberOfPeople: Float
+    let duration: Float
+    var ingredientsNeeded: [String]
+    
+    init(from recipeEntity: RecipeEntry) {
+        
+        self.name = recipeEntity.name ?? "No name"
+        self.imageURL = recipeEntity.image ?? "No adress image"
+        self.url = recipeEntity.url ?? "No url"
+        self.numberOfPeople = recipeEntity.person
+        self.duration = recipeEntity.totalTime
+        self.ingredientsNeeded = [] // Pas content si je mets seulement la ligne en dessous.
+        self.ingredientsNeeded = convertDatasToStringArray(ingredients: recipeEntity.ingredients)
+    }
+    
+    private func convertDatasToStringArray(ingredients: Data?) -> [String] {
+        guard let datas = ingredients else { return [] }
+            
+        
+        let data = Data(datas)
+        return (try? JSONDecoder().decode([String].self, from: data)) ?? []
     }
 }
 
-//
-// To parse values from Alamofire responses:
-//
-//   Alamofire.request(url).responseTotal { response in
-//     if let total = response.result.value {
-//       ...
-//     }
-//   }
+extension Recipe: Codable {
+    
+    enum Rename: String, CodingKey {
+        case recipe
+        case name = "label"
+        case imageURL = "image"
+        case url
+        case numberOfPeople = "yield"
+        case duration = "totalTime"
+        case ingredientsNeeded = "ingredientLines"
 
-// MARK: - Total
-struct Total: Codable {
+        case totalDaily
+        case ENERC_KCAL
+        case quantity
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Rename.self)
+
+        let recipe = try container.nestedContainer(keyedBy: Rename.self, forKey: .recipe)
+
+        name = try recipe.decode(String.self, forKey: .name)
+        imageURL = try recipe.decode(String.self, forKey: .imageURL)
+        url = try recipe.decode(String.self, forKey: .url)
+        numberOfPeople = try recipe.decode(Float.self, forKey: .numberOfPeople)
+        duration = try recipe.decode(Float.self, forKey: .duration)
+        ingredientsNeeded = try recipe.decode([String].self, forKey: .ingredientsNeeded)
+    }
+}
+
+struct MyObject: Decodable {
     let label: String
-    let quantity: Double
-    let unit: Unit
+    let quantity: Float
+    let unit: String
 }
 
-// MARK: - Helper functions for creating encoders and decoders
-
-func newJSONDecoder() -> JSONDecoder {
-    let decoder = JSONDecoder()
-    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
-        decoder.dateDecodingStrategy = .iso8601
+extension Recipe: Equatable {
+    static func == (lhs: Recipe, rhs: RecipeEntry) -> Bool {
+        return lhs.name == rhs.name && lhs.url == rhs.url
     }
-    return decoder
 }
-
-func newJSONEncoder() -> JSONEncoder {
-    let encoder = JSONEncoder()
-    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
-        encoder.dateEncodingStrategy = .iso8601
-    }
-    return encoder
-}
-

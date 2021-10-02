@@ -11,7 +11,7 @@ import Foundation
 protocol ViewModel {
     var sections: [Section] { get set }
     
-    func loadData(callback: () -> ())
+    func loadData(callback: @escaping (Error?) -> ())
 }
 
 extension ViewModel {

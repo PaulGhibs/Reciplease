@@ -10,38 +10,52 @@
 import Foundation
 import Alamofire
 
-class AlamoRequest {
-    
+class RecipeRequest: APIService {
+ 
+
     // Pattern singleton
-    public static let alamoRequest = AlamoRequest()
+    public static let alamoRequest = RecipeRequest()
+    
+    static var shared = RecipeRequest()
+        private let session: Session
+        init(session: Session = .default) {
+            self.session = session
+        }
     
     //API key and app ID
-    let apiKey = ""
-    let appID = ""
+    let apiKey = Constants.valueAPIKey("appkey")
+    let appID = Constants.valueAPIKey("appId")
     
     // Set a notification when the recipe are loaded
     static let notificationRecipeLoaded = Notification.Name("recipeLoaded")
     
     // To get the data from the request
-    var recipe : Welcome? {
+    var recipe : Recipe? {
         didSet {
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: AlamoRequest.notificationRecipeLoaded, object: nil, userInfo: nil)
+                NotificationCenter.default.post(name: RecipeRequest.notificationRecipeLoaded, object: nil, userInfo: nil)
             }
         }
     }
     
     // Public init for pattern singleton
-    public init() {}
     
     
-    func getRequest(ingredient: String, callback: @escaping(_ result: DataResponse<Welcome, AFError>?) -> Void) {
-        
+    func getRecipe(ingredient: String, callback: @escaping (Result<RecipeResponse, AFError>?) -> Void) {
         let parameters = ["q":ingredient,"to":"100","app_id":appID,"app_key":apiKey]
+        let url = "https://api.edamam.com/search?"
         
-        AF.request("https://api.edamam.com/search?", method: .get, parameters: parameters).responseDecodable(of: Welcome.self) { (response) in
-            callback(response)
+        session.request(url, method: .get, parameters: parameters).validate()
+            .responseDecodable(of: RecipeResponse.self) { (response) in
+                
+            callback(response.result)
+
         }
     }
     
+    
+    
+    
 }
+
+

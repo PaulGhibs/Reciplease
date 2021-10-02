@@ -9,6 +9,13 @@ import UIKit
 
 class RecipeViewCell: UITableViewCell {
 
+    @IBOutlet weak var firstHeader: UILabel!
+    
+    @IBOutlet weak var secondText: UILabel!
+    
+    @IBOutlet weak var imageBackground: UIImageView!
+    
+    
     override func cellPressed(cellViewModel: CellViewModel, from controller: UIViewController) {
         
     
@@ -18,7 +25,7 @@ class RecipeViewCell: UITableViewCell {
         guard let tableCVM = cellViewModel as? RecipeCellViewModel else {
             return
         }
-    
+        self.firstHeader.text = tableCVM.recipe?.name
      
 
     }

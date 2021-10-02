@@ -19,10 +19,9 @@ class TabBarViewController: UITabBarController {
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Chalkduster", size: 10)]
         appearance.setTitleTextAttributes(attributes as [NSAttributedString.Key : Any], for: .normal)
 
-           setupVCs()
+        setupVCs()
    
         if let items = self.tabBar.items {
-
         //Get the height of the tab bar
         let height = self.tabBar.bounds.height
 

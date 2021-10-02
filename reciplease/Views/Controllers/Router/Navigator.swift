@@ -9,8 +9,18 @@
 import Foundation
 
 protocol Navigator {
-    var lastNavigationStyle: NavigationStyle? { get set }
+    var lastRoutingEntry: RoutingEntry? { get set }
     func visibleViewController() -> Controller?
     func visibleViewController(_ rootViewController: Controller?) -> Controller?
-    func route(navigationStyle: NavigationStyle, animated: Bool) -> Navigator
+    func route(routingEntry: RoutingEntry,
+               fromController: Controller,
+               animated: Bool) -> Navigator
+}
+
+
+@objc enum NavigationStyle: Int {
+    case push
+    case pop
+    case modal
+    case dismiss
 }

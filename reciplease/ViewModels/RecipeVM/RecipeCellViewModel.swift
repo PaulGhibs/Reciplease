@@ -9,23 +9,24 @@ import Foundation
 
 class RecipeCellViewModel: TableCellViewModel {
     var routingEntry: RoutingEntry?
-    
-    
-    
+ 
     var estimatedHeight: Float {
         return 50
     }
     
     var height: Float {
-        return 50
+        return 100
     }
     
     var indexPath: IndexPath?
     var nibName: String? = "RecipeViewCell"
     lazy var reuseIdentifier: String = String(describing: self)
-    var name: String
+    var recipe : Recipe?
     
-    init(name: String) {
-        self.name = name
+    init(recipe : Recipe?) {
+        self.recipe = recipe
     }
+    
+    
+    
 }

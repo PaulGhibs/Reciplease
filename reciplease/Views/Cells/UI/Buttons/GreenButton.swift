@@ -16,20 +16,18 @@ class GreenButton: UITableViewCell {
     
         override func cellPressed(cellViewModel: CellViewModel, from controller: UIViewController) {
        
+            guard let routingEntry = cellViewModel.routingEntry,
+                  let navController = controller.navigationController else {
+                return
+            }
+            
+            let newRouting = Routing()
+                
+            _ = newRouting
+                .route(routingEntry: routingEntry,
+                       fromController: navController,
+                       animated: true)
        
-
-        guard let routingEntry = cellViewModel.routingEntry,
-              let navController = controller.navigationController else {
-            print("need to implement")
-            return
-        }
-        let newRouting = Routing()
-        let navStyle = PushNavigationStyle(fromNVC: navController,
-                                           routingEntry: routingEntry)
-        
-        _ = newRouting
-            .route(navigationStyle: navStyle,
-                   animated: true)
 
     }
     

@@ -14,14 +14,16 @@ class RecipeViewSection: Section {
     var title: String
     
     var cellsVM: [CellViewModel]
+    
+    var recipes: Recipe?
 
     init() {
         self.position = 0
         self.title = ""
-
+    
         self.cellsVM = [CellViewModel]()
-        self.cellsVM.append(RecipeCellViewModel(name: "Numéro "))
-
-        
+       
+        self.cellsVM.append(RecipeCellViewModel(recipe: <#Recipe?#>))
+   
     }
 }

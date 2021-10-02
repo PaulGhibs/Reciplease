@@ -10,9 +10,9 @@ import Foundation
 class SearchViewModel: ViewModel {
     var sections: [Section] = []
 
-    func loadData(callback: () -> ()) {
+    func loadData(callback: @escaping (Error?) -> ()) {
         self.sections.append(SearchSection())
-        callback()
+        callback(nil)
     }
     
 }

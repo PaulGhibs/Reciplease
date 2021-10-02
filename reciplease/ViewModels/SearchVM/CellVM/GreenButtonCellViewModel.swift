@@ -16,7 +16,8 @@ class GreenButtonCellViewModel : TableCellViewModel {
     var indexPath: IndexPath?
     var routingEntry: RoutingEntry?
 
-    
+    var name: String
+
     var height: Float {
         return 90
     }
@@ -26,7 +27,7 @@ class GreenButtonCellViewModel : TableCellViewModel {
     init(title : String, routingEntry : RoutingEntry) {
         self.title = title
         self.routingEntry = routingEntry
-       
+        self.name = ""
         
     }
     
