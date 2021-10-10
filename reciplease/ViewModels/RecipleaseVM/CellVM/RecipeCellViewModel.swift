@@ -21,9 +21,17 @@ class RecipeCellViewModel: TableCellViewModel {
     var indexPath: IndexPath?
     var nibName: String? = "RecipeViewCell"
     lazy var reuseIdentifier: String = String(describing: self)
-    var recipe : Recipe?
     
-    init(recipe : Recipe?) {
+    
+    /// Recipes instance
+    var recipes : RecipeCollection
+  
+    var recipe : Recipe
+   
+    
+    init(recipes: RecipeCollection, recipe: Recipe) {
+        self.recipes = recipes
+        
         self.recipe = recipe
     }
     

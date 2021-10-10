@@ -15,15 +15,20 @@ class RecipeViewSection: Section {
     
     var cellsVM: [CellViewModel]
     
-    var recipes: Recipe?
+    
 
-    init() {
+    init(recipes: RecipeCollection) {
         self.position = 0
         self.title = ""
-    
+        
         self.cellsVM = [CellViewModel]()
        
-        self.cellsVM.append(RecipeCellViewModel(recipe: <#Recipe?#>))
+        for recipe in recipes.recipes {
+            self.cellsVM.append(RecipeCellViewModel(recipes: recipes, recipe: recipe))
+            
+        }
+      
+        
    
     }
 }

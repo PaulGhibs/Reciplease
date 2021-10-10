@@ -6,9 +6,12 @@
 //
 
 import Foundation
-import Alamofire
 
 
 protocol APIService {
-    func getRecipe(ingredient: String, callback: @escaping(_ result: Result<RecipeResponse, AFError>?) -> Void)
+     typealias Callback = (Bool, Any?) -> Void
+     func requestRecipe(with ingredients: String, callback: @escaping Callback)
+     func createURL() throws -> URL?
+     func parse <T: Decodable>(_ data: Data) -> T
+    
 }

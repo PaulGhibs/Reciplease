@@ -21,12 +21,20 @@ class RecipeViewCell: UITableViewCell {
     
     }
     
+    var recipe: Recipe?
+    
+    
     override func configure(cellViewModel : CellViewModel, from controller: UIViewController) {
         guard let tableCVM = cellViewModel as? RecipeCellViewModel else {
             return
         }
-        self.firstHeader.text = tableCVM.recipe?.name
-     
+        self.recipe = tableCVM.recipe
+        
+        
+        self.firstHeader.text = tableCVM.recipe.name
+        
+        
+        ImageService.getImage(for: imageBackground, from: tableCVM.recipe.imageURL)
 
     }
     

@@ -8,8 +8,16 @@
 import Foundation
 
 class RecipeRountingEntry : RoutingEntry {
+  
+ 
+    
+    var recipesTab : RecipeCollection?
+
+   
+    
     var viewController: Controller? {
-        let viewModel = RecipeViewModel(apiService: RecipeRequest())
+
+        let viewModel = RecipeViewModel(apiService: RecipeRequest(), recipeCollection: RecipeCollection(recipes: [Recipe]()))
         
         return RecipesViewController(viewModel: viewModel)
     }

@@ -31,3 +31,4 @@ extension UITableViewCell: CellConfigurable {
     
 }
 
+

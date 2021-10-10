@@ -15,6 +15,7 @@ class SearchSection: Section {
     
     var cellsVM: [CellViewModel]
 
+    
     init() {
         self.position = 1
         self.title = ""
@@ -27,6 +28,8 @@ class SearchSection: Section {
         let searchFridge = SearchCellViewModel(name: "", titleHeader: "What's in your fridge ? ", IngredientsList: "Lemon, Cheese, Sausages...", buttonTitle: "Add")
         
         let IngredientsSelected = ResultCellViewModel(name: "", title: "Your ingredients: ", clearButton: "Clear", choosenIngredients: "")
+        
+        
         let greenButton = GreenButtonCellViewModel(title: "Search for recipes", routingEntry: RecipeRountingEntry())
         self.cellsVM.append(searchFridge)
         self.cellsVM.append(IngredientsSelected)

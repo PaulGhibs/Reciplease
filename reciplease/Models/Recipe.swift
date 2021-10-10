@@ -21,7 +21,7 @@
 
 import Foundation
 
-struct RecipeResponse: Decodable {
+struct RecipeCollection: Decodable {
     let recipes: [Recipe]
 
     enum CodingKeys: String, CodingKey {
