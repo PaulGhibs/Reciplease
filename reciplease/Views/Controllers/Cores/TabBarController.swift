@@ -10,10 +10,14 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
  
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
-        self.tabBar.tintColor = UIColor.white
+        view.backgroundColor = .systemBackground
+        self.tabBar.tintColor = UIColor.darkGray
+        self.tabBar.backgroundColor = UIColor.systemBackground
+        self.tabBar.barStyle = .default
         tabBar.unselectedItemTintColor = UIColor.lightGray
         let appearance = UITabBarItem.appearance()
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Chalkduster", size: 10)]
@@ -23,7 +27,7 @@ class TabBarViewController: UITabBarController {
    
         if let items = self.tabBar.items {
         //Get the height of the tab bar
-        let height = self.tabBar.bounds.height
+        let height = self.tabBar.bounds.height+2
 
         //Calculate the size of the items
 
@@ -48,8 +52,8 @@ class TabBarViewController: UITabBarController {
         view a background color
         */
         let separator = UIView(frame: CGRect(
-        x: xPosition, y: 0, width: 0.5, height: height))
-        separator.backgroundColor = UIColor.white
+        x: xPosition, y: 0, width: 0.5, height: height+15))
+        separator.backgroundColor = UIColor.darkGray
         tabBar.insertSubview(separator, at: 1)
         }
         }

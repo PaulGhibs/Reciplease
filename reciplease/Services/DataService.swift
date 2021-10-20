@@ -8,28 +8,26 @@
 
 import Foundation
 import Alamofire
-import Nuke
 
 class RecipeRequest: APIService {
    
     private static let recipe = RecipeCollection(recipes: [])
 
      func requestRecipe(with ingredients: String, callback: @escaping RecipeRequest.Callback) {
-        
-
+       
         let url: URL!
              do {
-                 url = try createURL()
+                 url = try RecipeRequest.createURL()
              } catch {
                  return callback(false, nil)
              }
-     
-        
+
              
          AF.request(url, method: .get).responseJSON { response in
-                 switch response.result{
+                 switch response.result {
                      case .success:
-                     let resource: RecipeCollection = self.parse(response.data!)
+                     let resource: RecipeCollection = RecipeRequest.parse(response.data!)
+                     
                      callback(true, resource)
                      case .failure(let error):
                          print("Error : \(error)" )
@@ -40,7 +38,7 @@ class RecipeRequest: APIService {
              }
     }
     
-     func createURL() throws -> URL? {
+     static func createURL() throws -> URL? {
         let completeURL = Endpoint.searchEndpoint
         
                print("completeURL", completeURL)
@@ -48,9 +46,9 @@ class RecipeRequest: APIService {
                return URL(string: completeURL)
     }
     
-     func parse<Recipes: Decodable>(_ data: Data) -> Recipes {
+     static func parse<RecipeCollection: Decodable>(_ data: Data) -> RecipeCollection {
         do {
-                let recipe = try JSONDecoder().decode(Recipes.self, from: data)
+                let recipe = try JSONDecoder().decode(RecipeCollection.self, from: data)
                     return recipe
                 } catch DecodingError.dataCorrupted(let context) {
                     print(context.debugDescription)
@@ -64,47 +62,10 @@ class RecipeRequest: APIService {
                     print("Unknown error")
                 }
 
-                return RecipeRequest.recipe as! Recipes
+                return RecipeRequest.recipe as! RecipeCollection
         }
     
-
-
 }
     
  
-// Perform a  call to get images
-struct ImageService {
-    /**
-     Call to download an image linked to a recipe
-     - parameter view: Display the image
-     - parameter recipeURL: The image location
-     */
-    static func getImage(for view: UIImageView, from recipeURL: String?) {
-        guard let smallImageURL = recipeURL else {
-            print("no small image url")
-            return
-        }
-        guard let url = URL(string: smallImageURL) else {
-            print("unable to create small image url")
-            return
-        }
-
-        let options = ImageLoadingOptions(
-            placeholder: UIImage(named: "defaultImage"),
-            transition: .fadeIn(duration: 0.3)
-        )
-
-        Nuke.loadImage(with: url,
-                       options: options,
-                       into: view)
-    }
-}
-
-
- 
-    
-    
-    
-
-
 

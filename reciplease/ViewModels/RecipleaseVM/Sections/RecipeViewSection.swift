@@ -17,17 +17,29 @@ class RecipeViewSection: Section {
     
     
 
-    init(recipes: RecipeCollection) {
+    init(collection : RecipeCollection) {
         self.position = 0
         self.title = ""
         
         self.cellsVM = [CellViewModel]()
-       
-        for recipe in recipes.recipes {
-            self.cellsVM.append(RecipeCellViewModel(recipes: recipes, recipe: recipe))
-            
-        }
       
+        
+        for recipe in collection.recipes {
+            let icone = recipe.imageURL
+        
+            
+            let cellVM = RecipeCellViewModel(name: "\(recipe.name)",
+                                             secondName: recipe.ingredientsNeeded,
+                                             image: icone, duration: recipe.duration, numberOfPeople: recipe.numberOfPeople, routingEntry: DetailRoutingEntry())
+            self.cellsVM.append(cellVM)
+        }
+        
+//        for recipe in recipes.recipes {
+//            self.cellsVM.append(RecipeCellViewModel(name: "\(recipe.name)", secondName: "\(recipe.ingredientsNeeded)"))
+//
+//        }
+    
+
         
    
     }

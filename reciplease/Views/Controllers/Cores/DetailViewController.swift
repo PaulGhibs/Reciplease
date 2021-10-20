@@ -1,33 +1,31 @@
 //
-//  RecipesViewController.swift
+//  DetailViewController.swift
 //  reciplease
 //
-//  Created by Paul Ghibeaux on 17/09/2021.
+//  Created by Paul Ghibeaux on 20/10/2021.
 //
+
+import Foundation
 
 import UIKit
 
-class RecipesViewController: BasicTableViewController {
+class DetailViewController: BasicTableViewController {
     
  
    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .secondarySystemBackground
+        title = "Reciplease"
         let backArrowImage = UIImage(named: "arrow")
         let renderedImage = backArrowImage?.withRenderingMode(.alwaysOriginal)
         
-        self.navigationController!.navigationBar.barStyle = .default
+        self.navigationController!.navigationBar.barStyle = .black
         self.navigationController!.navigationBar.backIndicatorImage = renderedImage
         self.navigationController!.navigationBar.backIndicatorTransitionMaskImage = renderedImage
-        self.navigationController!.navigationBar.backgroundColor = .systemBackground
-       
+        self.navigationController!.navigationBar.backgroundColor = .darkGray
         self.navigationItem.leftBarButtonItem?.title = "Back"
-        let image = UIImage(named: "cook")
-        navigationItem.titleView = UIImageView(image: image)
-
-
 
        
         self.viewModel?.loadData { [weak self] _ in

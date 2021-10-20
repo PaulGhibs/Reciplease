@@ -14,3 +14,7 @@ protocol Section {
     var cellsVM: [CellViewModel] { get set }
 
 }
+
+protocol TableSection: Section {
+    var heightForHeader: Int { get }
+}

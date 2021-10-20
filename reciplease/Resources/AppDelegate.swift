@@ -11,16 +11,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)
-        UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().barTintColor = .darkGray
-        UINavigationBar.appearance().isTranslucent = true
+       
+       
         
-           UINavigationBar.appearance().clipsToBounds = false
-        UINavigationBar.appearance().backgroundColor = .darkGray
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font : (UIFont(name: "Chalkduster", size: 25))!, NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().tintColor = UIColor.systemBackground
+        
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font : (UIFont(name: "Avenir Next", size: 25))!, NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel]
         return true
         
         

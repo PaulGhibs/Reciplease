@@ -1,34 +1,34 @@
 //
-//  SearchCellViewModel.swift
+//  DetailRecipeCellViewModel.swift
 //  reciplease
 //
-//  Created by Paul Ghibeaux on 16/09/2021.
+//  Created by Paul Ghibeaux on 20/10/2021.
 //
 
 import Foundation
 
-class SearchCellViewModel: TableCellViewModel {
+class DetailRecipeCellViewModel: TableCellViewModel {
     var routingEntry: RoutingEntry?
     
     
     var height: Float {
-        return 150
+        return 650
     }
     
     var indexPath: IndexPath?
-    var nibName: String? = "SearchViewCell"
+    var nibName: String? = "DetailViewCell"
     lazy var reuseIdentifier: String = String(describing: self)
     var name: String
     
     var titleHeader: String
-    var IngredientsList: String
-    var buttonTitle: String
+    var IngredientsList: [String]
+    var buttonLike: String
 
     
-    init(name: String, titleHeader: String, IngredientsList: String, buttonTitle: String) {
+    init(name: String, titleHeader: String, IngredientsList: [String], buttonLike: String) {
         self.name = name
         self.titleHeader = titleHeader
         self.IngredientsList = IngredientsList
-        self.buttonTitle = buttonTitle
+        self.buttonLike = buttonLike
     }
 }

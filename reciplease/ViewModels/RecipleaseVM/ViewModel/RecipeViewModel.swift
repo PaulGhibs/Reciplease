@@ -13,39 +13,34 @@ class RecipeViewModel : ViewModel {
     var apiService : APIService?
     
     
-    var recipeCollection: RecipeCollection
-    
-    init(apiService: APIService, recipeCollection : RecipeCollection) {
+    var recipes = RecipeCollection(recipes: [])
+
+    init(apiService: APIService) {
         self.apiService = apiService
-        self.recipeCollection = recipeCollection
     }
 
     
     var ingredientsUsed: String = "chicken"
-    
+
     func loadData(callback: @escaping (Error?) -> ()) {
-        
+
         _ = apiService?.requestRecipe(with: "\(ingredientsUsed)") { (success, resource) in
-            
+            var tempSections: [Section] = []
             if success, let resource = resource {
-                self.recipeCollection = resource as! RecipeCollection
-       
-                print(self.recipeCollection)
-                self.sections.append(RecipeViewSection(recipes: self.recipeCollection))
-                
-            } else {
-                
+                self.recipes = resource as! RecipeCollection
+                let currentCollectionSection = RecipeViewSection(collection : self.recipes)
+                tempSections.append(currentCollectionSection)
+                self.sections = tempSections
+                callback(nil)
+
             }
         }
-        
+
     }
-    
-    
     
     private func checkRecipeCount(_ recipes: RecipeCollection) {
-        if self.recipeCollection.recipes.count == 0 {
-            print(self.recipeCollection.recipes.count)
-        }
-    }
+        if self.recipes.recipes.count == 0 {
+          }
+      }
     
 }

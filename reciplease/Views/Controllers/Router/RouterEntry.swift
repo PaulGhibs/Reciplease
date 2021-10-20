@@ -9,15 +9,9 @@ import Foundation
 
 class RecipeRountingEntry : RoutingEntry {
   
- 
-    
-    var recipesTab : RecipeCollection?
-
-   
-    
     var viewController: Controller? {
 
-        let viewModel = RecipeViewModel(apiService: RecipeRequest(), recipeCollection: RecipeCollection(recipes: [Recipe]()))
+        let viewModel = RecipeViewModel(apiService: RecipeRequest())
         
         return RecipesViewController(viewModel: viewModel)
     }
@@ -29,6 +23,25 @@ class RecipeRountingEntry : RoutingEntry {
     
 }
 
+
+class DetailRoutingEntry : RoutingEntry {
+  
+    var recipe : Recipe?
+    
+    
+    var viewController: Controller? {
+
+        let viewModel = DetailViewModel(recipe: recipe!)
+        
+        return DetailViewController(viewModel: viewModel)
+    }
+    
+    var completionBlock: (() -> Void)?
+    var navigationStyle: NavigationStyle {
+        return .push
+    }
+    
+}
 
 class NeedimplementRoutingEntry : RoutingEntry {
     var viewController: Controller?

@@ -10,13 +10,12 @@ import Foundation
 class RecipeCellViewModel: TableCellViewModel {
     var routingEntry: RoutingEntry?
  
-    var estimatedHeight: Float {
-        return 50
-    }
+    
     
     var height: Float {
-        return 100
+        return 185
     }
+    
     
     var indexPath: IndexPath?
     var nibName: String? = "RecipeViewCell"
@@ -24,16 +23,25 @@ class RecipeCellViewModel: TableCellViewModel {
     
     
     /// Recipes instance
-    var recipes : RecipeCollection
   
-    var recipe : Recipe
+    var name : String
    
+    var secondName: [String]
+    var image: URL?
+    var duration : Float
+    var numberOfPeople: Float
     
-    init(recipes: RecipeCollection, recipe: Recipe) {
-        self.recipes = recipes
-        
-        self.recipe = recipe
+  
+    
+    init( name: String, secondName: [String], image: URL?, duration: Float, numberOfPeople: Float,  routingEntry : RoutingEntry) {
+        self.name = name
+        self.secondName = secondName
+        self.image = image
+        self.duration = duration
+        self.numberOfPeople = numberOfPeople
+        self.routingEntry = routingEntry
     }
+    
     
     
     

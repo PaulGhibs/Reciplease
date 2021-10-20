@@ -30,7 +30,7 @@ struct RecipeCollection: Decodable {
 }
 struct Recipe {
     let name: String
-    let imageURL: String?
+    let imageURL: URL?
     let url: String?
     let numberOfPeople: Float
     let duration: Float
@@ -39,7 +39,7 @@ struct Recipe {
     init(from recipeEntity: RecipeEntry) {
         
         self.name = recipeEntity.name ?? "No name"
-        self.imageURL = recipeEntity.image ?? "No adress image"
+        self.imageURL = recipeEntity.image
         self.url = recipeEntity.url ?? "No url"
         self.numberOfPeople = recipeEntity.person
         self.duration = recipeEntity.totalTime
@@ -78,7 +78,7 @@ extension Recipe: Codable {
         let recipe = try container.nestedContainer(keyedBy: Rename.self, forKey: .recipe)
 
         name = try recipe.decode(String.self, forKey: .name)
-        imageURL = try recipe.decode(String.self, forKey: .imageURL)
+        imageURL = try recipe.decode(URL.self, forKey: .imageURL)
         url = try recipe.decode(String.self, forKey: .url)
         numberOfPeople = try recipe.decode(Float.self, forKey: .numberOfPeople)
         duration = try recipe.decode(Float.self, forKey: .duration)

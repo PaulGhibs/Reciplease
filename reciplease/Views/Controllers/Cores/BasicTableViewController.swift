@@ -7,8 +7,12 @@
 
 import UIKit
 
+private let reuseIdentifier = "Cell"
+
 class BasicTableViewController: UITableViewController {
         
+    
+        // MARK: - Datasource / delegate
     override func numberOfSections(in tableView: UITableView) -> Int {
         guard let vm = self.viewModel else {
             return 0
@@ -82,25 +86,7 @@ class BasicTableViewController: UITableViewController {
         super.init(coder: coder)
     }
   
-    
   
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.viewModel?.loadData {_ in 
-            self.registerCells()
-        }
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.viewModel?.loadData {_ in
-            
-            self.tableView.reloadData()
-        }
-    }
-   
     
     // MARK: - Register
     public func registerCells() {

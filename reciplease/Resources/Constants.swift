@@ -29,8 +29,8 @@ struct Endpoint {
     static let app_id = Constants.valueAPIKey("appId")
     
     static let from = "&from=0"
-    static let to = "&to=100&calories=591-722&health=alcohol-free"
-    static let searchEndpoint = "https://api.edamam.com/search?q=chicken&app_id=1076edd2&app_key=544b1da54c3519bcfb84ec16fe78227d&from=0&to=3&calories=591-722&health=alcohol-free" 
+    static let to = "&to=20"
+    static let searchEndpoint = "https://api.edamam.com/search?" + search + "&app_id=\(app_id)" + "&app_key=\(app_key)" + from + to
     
-//https://api.edamam.com/search?q=chicken&app_id=1076edd2&app_key=544b1da54c3519bcfb84ec16fe78227d&from=0&to=3&calories=591-722&health=alcohol-free
+
 }

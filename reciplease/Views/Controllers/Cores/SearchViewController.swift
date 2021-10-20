@@ -9,9 +9,24 @@ import UIKit
 
 class SearchViewController: BasicTableViewController {
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.navigationBar.topItem?.leftBarButtonItem?.title = "Reciplease"
+
+
+        
+    }
     override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+
         title = "Reciplease"
-        view.backgroundColor = .darkGray
+        self.viewModel?.loadData { _ in
+            self.tableView.reloadData()
+            self.registerCells()
+
+        }
     }
 
 

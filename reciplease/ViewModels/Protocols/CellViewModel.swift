@@ -19,3 +19,8 @@ protocol TableCellViewModel: CellViewModel {
     var height: Float { get }
 
 }
+
+protocol TableEditedCellViewModel: TableCellViewModel {
+    var canEdit : Bool { get }
+    func completionEdit(callback: @escaping (RecipeError?) -> ())
+}
