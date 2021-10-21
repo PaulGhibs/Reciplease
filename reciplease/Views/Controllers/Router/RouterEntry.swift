@@ -26,12 +26,16 @@ class RecipeRountingEntry : RoutingEntry {
 
 class DetailRoutingEntry : RoutingEntry {
   
-    var recipe : Recipe?
+    var recipe : Recipe
     
+    
+    init(recipe: Recipe){
+        self.recipe = recipe
+    }
     
     var viewController: Controller? {
 
-        let viewModel = DetailViewModel(recipe: recipe!)
+        let viewModel = DetailViewModel(recipe: recipe)
         
         return DetailViewController(viewModel: viewModel)
     }

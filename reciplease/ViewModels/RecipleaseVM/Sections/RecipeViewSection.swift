@@ -30,7 +30,7 @@ class RecipeViewSection: Section {
             
             let cellVM = RecipeCellViewModel(name: "\(recipe.name)",
                                              secondName: recipe.ingredientsNeeded,
-                                             image: icone, duration: recipe.duration, numberOfPeople: recipe.numberOfPeople, routingEntry: DetailRoutingEntry())
+                                             image: icone, duration: recipe.duration, numberOfPeople: recipe.numberOfPeople, routingEntry: DetailRoutingEntry(recipe: recipe))
             self.cellsVM.append(cellVM)
         }
         

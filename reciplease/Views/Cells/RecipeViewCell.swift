@@ -31,7 +31,6 @@ class RecipeViewCell: UITableViewCell {
         self.firstHeader.text = tableCVM.name
         firstHeader.layer.shadowRadius = 5.0 //set shadow radius to your desired value.
         firstHeader.layer.shadowOpacity = 1.0 //Choose an opacity. Make sure it's visible (default is 0.0)
-
         //Other options
         firstHeader.layer.shadowOffset = CGSize(width: 10, height: 10)
         firstHeader.layer.shadowColor = UIColor.black.cgColor
@@ -45,7 +44,6 @@ class RecipeViewCell: UITableViewCell {
         self.duration.text = String(formatText) + "⏱"
         self.duration.contentMode = .scaleAspectFit
         self.duration.layer.borderColor = UIColor.white.cgColor
-
         self.imageBackground.sd_setImage(with: tableCVM.image, completed: nil)
         imageBackground.contentMode = .scaleAspectFill
         imageBackground.clipsToBounds = true

@@ -33,7 +33,7 @@ class RecipeCellViewModel: TableCellViewModel {
     
   
     
-    init( name: String, secondName: [String], image: URL?, duration: Float, numberOfPeople: Float,  routingEntry : RoutingEntry) {
+    init(name: String, secondName: [String], image: URL?, duration: Float, numberOfPeople: Float,  routingEntry : RoutingEntry) {
         self.name = name
         self.secondName = secondName
         self.image = image
