@@ -7,24 +7,37 @@
 
 import UIKit
 
-class FavoriteViewController: UIViewController {
+class FavoriteViewController: BasicTableViewController {
+    
+ 
+   
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .darkGray
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.backgroundColor = .systemBackground
+        let backArrowImage = UIImage(named: "arrow")
+        let renderedImage = backArrowImage?.withRenderingMode(.alwaysOriginal)
+        
+        self.navigationController!.navigationBar.barStyle = .default
+        self.navigationController!.navigationBar.backIndicatorImage = renderedImage
+        self.navigationController!.navigationBar.backIndicatorTransitionMaskImage = renderedImage
+        self.navigationController!.navigationBar.backgroundColor = .systemBackground
+       
+        self.navigationItem.leftBarButtonItem?.title = "Back"
+        let image = UIImage(named: "cook")
+        navigationItem.titleView = UIImageView(image: image)
 
-        // Do any additional setup after loading the view.
+
+
+       
+        self.viewModel?.loadData { [weak self] _ in
+            self?.registerCells()
+            self?.tableView.reloadData()
+
+        }
     }
+   
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

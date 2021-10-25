@@ -7,7 +7,8 @@
 
 import Foundation
 
-class ResultCellViewModel: TableCellViewModel {
+
+class SearchCellViewModel: TableCellViewModel {
     var routingEntry: RoutingEntry?
     
     
@@ -16,7 +17,7 @@ class ResultCellViewModel: TableCellViewModel {
     }
     
     var indexPath: IndexPath?
-    var nibName: String? = "IngredientsSelectedCell"
+    var nibName: String? = "SearchCell"
     lazy var reuseIdentifier: String = String(describing: self)
     var name: String
     
@@ -27,17 +28,19 @@ class ResultCellViewModel: TableCellViewModel {
     
     var title: String
     var clearbutton: String
-    var choosenIngredients: [String]
 
-  
-    init(name: String, title: String, clearButton: String, choosenIngredients: [String], titleHeader: String, IngredientsList: String, buttonTitle: String) {
+    // to do have osberved object string
+   
+
+    init(name: String, title: String, clearButton: String ,titleHeader: String, IngredientsList: String, buttonTitle: String) {
         self.name = name
         self.title = title
         self.clearbutton = clearButton
-        self.choosenIngredients = choosenIngredients
         self.titleHeader = titleHeader
         self.IngredientsList = IngredientsList
         self.buttonTitle = buttonTitle
-
+        
     }
 }
+
+

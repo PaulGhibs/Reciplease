@@ -16,26 +16,25 @@ class SearchSection: Section {
     var cellsVM: [CellViewModel]
 
     
+    var listIngredients = UserDefaults.standard.object(forKey: "ingredients") as! String
+    
     init() {
         self.position = 1
         self.title = ""
         
-        
+       
         
         self.cellsVM = [CellViewModel]()
         
-   
-        let IngredientsSelected = ResultCellViewModel(name: "", title: "Your ingredients: ", clearButton: "Clear", choosenIngredients: [""],titleHeader: "What's in your fridge ?", IngredientsList: "Lemon, Cheese, Sausages...", buttonTitle: "Add")
+        
+        let IngredientsSelected = SearchCellViewModel(name: "", title: "Your ingredients: ", clearButton: "Clear", titleHeader: "What's in your fridge ?", IngredientsList: "Lemon,Cheese,Sausages...", buttonTitle: "Add")
+      
         
         
-        let greenButton = GreenButtonCellViewModel(title: "Search for recipes", routingEntry: RecipeRountingEntry())
+        let greenButton = GreenButtonCellViewModel(title: "Search for recipes", routingEntry: RecipeRountingEntry(ingredient: listIngredients))
         
         self.cellsVM.append(IngredientsSelected)
         self.cellsVM.append(greenButton)
-        
-        
-        
-        
-       
+             
     }
 }

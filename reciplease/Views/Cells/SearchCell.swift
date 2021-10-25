@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import Foundation
 
-class IngredientsSelectedCell: UITableViewCell,  UITextViewDelegate {
+
+class SearchCell: UITableViewCell, UITextViewDelegate {
 
     @IBOutlet weak var YourIngredients: UILabel!
     
@@ -18,40 +20,44 @@ class IngredientsSelectedCell: UITableViewCell,  UITextViewDelegate {
     @IBOutlet weak var ingredients: UITextField!
     @IBOutlet weak var addButton: UIButton!
     
-    @IBOutlet weak var ingredientsLists: UITextView!
+    @IBOutlet weak var ingredientsLists: UITextView!{
+        didSet {
+            ingredientsLists.layer.borderColor = UIColor.lightGray.cgColor
+            ingredientsLists.layer.cornerRadius = 10
+            ingredientsLists.layer.borderWidth = 1.0
+        }
+    }
     
     //created a string variable
   
     var tempsIngredients = [String]()
-
-
+    var isEditingIngredients: Bool = false
+    let userDefaults = UserDefaults.standard
+  
+   
+    var viewModel : SearchCellViewModel?
+    
     @IBAction func clearAction(_ sender: UIButton) {
-        let clearAlert = UIAlertController(title: "Clear", message: "Do you want to remove all the ingredients ?", preferredStyle: .alert)
-        clearAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            self.tempsIngredients.removeAll()
-            self.ingredientsLists.text = ""
-        }))
-        clearAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        
+        self.tempsIngredients.removeAll()
+        self.ingredientsLists.text = ""
     }
     
     
     @IBAction func addIngredients(_ sender: UIButton) {
         if ingredients.text != "" {
             tempsIngredients.append(ingredients.text!)
-            ingredientsLists.text = "- " + tempsIngredients.joined(separator: "\n- ")
+            ingredientsLists.text = "-" + tempsIngredients.joined(separator: "\n-")
             ingredients.text = ""
-            
-            // to do add notification osberver for updating choosen ingredients
-//            self.resultchoosenIngredients = tempsIngredients
-            
-        } else {
-//            alert(title: "Erreur !", message: "Veuillez ajouter un ingrédient")
+            // Notify viewModel that we have something in tempsIngredients
+
         }
+    
     }
     
+  
+    
     override func configure(cellViewModel : CellViewModel, from controller: UIViewController) {
-        guard let tableCVM = cellViewModel as? ResultCellViewModel else {
+        guard let tableCVM = cellViewModel as? SearchCellViewModel else {
             return
         }
         titleHeader.text = tableCVM.titleHeader
@@ -61,18 +67,32 @@ class IngredientsSelectedCell: UITableViewCell,  UITextViewDelegate {
         YourIngredients.text = tableCVM.title
         ingredientsLists.delegate = self
         clearButton.setTitle(tableCVM.clearbutton, for: .normal)
-  
+        
     }
     
+
+    
+
+    
+    override func prepareForReuse() {
+        userDefaults.set(ingredients.text, forKey: "ingredients")
+    }
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-
+        
         return true
     }
+    
+    private func textFieldDidBeginEditing(_ textField: UITextField) {
+        ingredients.isEnabled = false
+    }
+    
+}
 
-    
-    
-    
+
+
+extension UserDefaults {
+   
 }

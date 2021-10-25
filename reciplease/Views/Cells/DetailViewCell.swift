@@ -6,18 +6,35 @@
 //
 
 import UIKit
+import SDWebImage
 
 class DetailViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet weak var imageHeader: UIImageView!
+    
+    
+    @IBOutlet weak var firstheader: UILabel!
+    
+    @IBOutlet weak var DetailText: UILabel!
+    
+    
+    
+    override func configure(cellViewModel : CellViewModel, from controller: UIViewController) {
+       
+        guard let tableCVM = cellViewModel as? DetailRecipeCellViewModel else {
+            return
+        }
+        
+        self.firstheader.text = tableCVM.titleHeader
+        for text in tableCVM.IngredientsList {
+            self.DetailText.text = text
+        }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        self.imageHeader.sd_setImage(with: tableCVM.imageHeader, completed: nil)
 
-        // Configure the view for the selected state
-    }
+        
+
+    
+}
     
 }

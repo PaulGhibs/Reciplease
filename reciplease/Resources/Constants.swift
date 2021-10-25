@@ -23,14 +23,18 @@ struct Constants {
 /// Assets to access API resources
 struct Endpoint {
   
-    static let search = "q=chicken"
+    static let search = "&q="
     //API key and app ID
     static let app_key = Constants.valueAPIKey("appkey")
     static let app_id = Constants.valueAPIKey("appId")
     
     static let from = "&from=0"
     static let to = "&to=20"
-    static let searchEndpoint = "https://api.edamam.com/search?" + search + "&app_id=\(app_id)" + "&app_key=\(app_key)" + from + to
+    static let searchEndpoint = "https://api.edamam.com/search?" + "&app_id=\(app_id)" + "&app_key=\(app_key)" + from + to + search 
     
 
+}
+
+struct UserDefaultsKeys {
+    static let ingredientsList = "IngredientsList"
 }

@@ -7,24 +7,30 @@
 
 import Foundation
 
-
-class RecipeViewModel : ViewModel {
+class RecipesListViewModel : ViewModel {
     var sections: [Section] = []
     var apiService : APIService?
     
     
     var recipes = RecipeCollection(recipes: [])
-
-    init(apiService: APIService) {
-        self.apiService = apiService
-    }
-
     
-    var ingredientsUsed: String = "chicken"
+    
+    var ingredient: String
+    
+    
+    init(apiService: APIService, ingredient : String) {
+        self.apiService = apiService
+        self.ingredient = ingredient
+        
+    }
+    
 
+    // try notification post here
+  
+    
     func loadData(callback: @escaping (Error?) -> ()) {
-
-        _ = apiService?.requestRecipe(with: "\(ingredientsUsed)") { (success, resource) in
+  
+        _ = apiService?.requestRecipe(with: ingredient) { (success, resource) in
             var tempSections: [Section] = []
             if success, let resource = resource {
                 self.recipes = resource as! RecipeCollection
@@ -35,12 +41,13 @@ class RecipeViewModel : ViewModel {
 
             }
         }
-
     }
     
     private func checkRecipeCount(_ recipes: RecipeCollection) {
         if self.recipes.recipes.count == 0 {
           }
       }
+    
+    
     
 }

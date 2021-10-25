@@ -10,29 +10,30 @@ import UIKit
 let cellIdentifier = "GreenButton"
 
 class GreenButton: UITableViewCell {
-
+    
     @IBOutlet weak var greenButton: UIButton!
     
-    
-        override func cellPressed(cellViewModel: CellViewModel, from controller: UIViewController) {
-       
-            guard let routingEntry = cellViewModel.routingEntry,
-                  let navController = controller.navigationController else {
-                return
-            }
-            
-            let newRouting = Routing()
-                
-            _ = newRouting
-                .route(routingEntry: routingEntry,
-                       fromController: navController,
-                       animated: true)
-       
+    var tempsIngredients = [String]()
 
+    override func cellPressed(cellViewModel: CellViewModel, from controller: UIViewController) {
+        
+        guard let routingEntry = cellViewModel.routingEntry,
+              let navController = controller.navigationController else {
+                  return
+              }
+        
+        let newRouting = Routing()
+        
+        _ = newRouting
+            .route(routingEntry: routingEntry,
+                   fromController: navController,
+                   animated: true)
+        
+        
     }
     
     override func configure(cellViewModel : CellViewModel, from controller: UIViewController) {
-       
+        
         guard let tableCVM = cellViewModel as? GreenButtonCellViewModel else {
             return
         }
@@ -40,9 +41,10 @@ class GreenButton: UITableViewCell {
         
         greenButton.setTitle(tableCVM.title, for: .normal)
         greenButton.layer.cornerRadius = 20
+      
         
-
+        
+    }
     
-}
-
+    
 }

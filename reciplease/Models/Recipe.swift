@@ -35,6 +35,7 @@ struct Recipe {
     let numberOfPeople: Float
     let duration: Float
     var ingredientsNeeded: [String]
+    var favorites : Bool?
     
     init(from recipeEntity: RecipeEntry) {
         
@@ -45,6 +46,7 @@ struct Recipe {
         self.duration = recipeEntity.totalTime
         self.ingredientsNeeded = [] // Pas content si je mets seulement la ligne en dessous.
         self.ingredientsNeeded = convertDatasToStringArray(ingredients: recipeEntity.ingredients)
+        self.favorites = recipeEntity.favorites
     }
     
     private func convertDatasToStringArray(ingredients: Data?) -> [String] {

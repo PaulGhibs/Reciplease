@@ -9,9 +9,16 @@ import Foundation
 
 class RecipeRountingEntry : RoutingEntry {
   
+    var ingredient: String
+    
+    init(ingredient : String){
+        self.ingredient = ingredient
+    }
+    
     var viewController: Controller? {
+        
 
-        let viewModel = RecipeViewModel(apiService: RecipeRequest())
+        let viewModel = RecipesListViewModel(apiService:RecipeRequest(), ingredient: ingredient)
         
         return RecipesViewController(viewModel: viewModel)
     }

@@ -23,7 +23,7 @@ class RecipeViewCell: UITableViewCell {
     
     
     override func configure(cellViewModel : CellViewModel, from controller: UIViewController) {
-        guard let tableCVM = cellViewModel as? RecipeCellViewModel else {
+        guard let tableCVM = cellViewModel as? RecipesListCellViewModel else {
             return
         }
         
@@ -35,11 +35,9 @@ class RecipeViewCell: UITableViewCell {
         firstHeader.layer.shadowOffset = CGSize(width: 10, height: 10)
         firstHeader.layer.shadowColor = UIColor.black.cgColor
         firstHeader.layer.masksToBounds = false
-
         for text in tableCVM.secondName {
             self.secondText.text = text
         }
-
         let formatText = formatMinuteSeconds(Int(tableCVM.duration))
         self.duration.text = String(formatText) + "⏱"
         self.duration.contentMode = .scaleAspectFit

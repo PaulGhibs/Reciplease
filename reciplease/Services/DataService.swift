@@ -17,7 +17,7 @@ class RecipeRequest: APIService {
        
         let url: URL!
              do {
-                 url = try RecipeRequest.createURL()
+                 url = try RecipeRequest.createURL(with: ingredients)
              } catch {
                  return callback(false, nil)
              }
@@ -38,8 +38,9 @@ class RecipeRequest: APIService {
              }
     }
     
-     static func createURL() throws -> URL? {
-        let completeURL = Endpoint.searchEndpoint
+    static func createURL(with ingredients: String) throws -> URL? {
+                let completeURL = Endpoint.searchEndpoint + ingredients
+        
         
                print("completeURL", completeURL)
 
