@@ -27,7 +27,7 @@ class RecipeRequest: APIService {
                  switch response.result {
                      case .success:
                      let resource: RecipeCollection = RecipeRequest.parse(response.data!)
-                     
+                     print(resource)
                      callback(true, resource)
                      case .failure(let error):
                          print("Error : \(error)" )

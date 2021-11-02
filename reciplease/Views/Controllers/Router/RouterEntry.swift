@@ -18,7 +18,7 @@ class RecipeRountingEntry : RoutingEntry {
     var viewController: Controller? {
         
 
-        let viewModel = RecipesListViewModel(apiService:RecipeRequest(), ingredient: ingredient)
+        let viewModel = RecipesListViewModel(apiService:RecipeRequest(), choosenIngredient: ingredient)
         
         return RecipesViewController(viewModel: viewModel)
     }
@@ -65,4 +65,26 @@ class NeedimplementRoutingEntry : RoutingEntry {
     }
 
     
+}
+
+
+class SuccesLoginRountingEntry : RoutingEntry {
+    
+    var ingredient: String
+    
+    init(ingredient : String){
+        self.ingredient = ingredient
+    }
+    
+    var viewController: Controller? {
+        let viewModel = RecipesListViewModel(apiService: RecipeRequest(), choosenIngredient: ingredient)
+        
+        return BasicTableViewController(viewModel: viewModel)
+    }
+    
+    var completionBlock: (() -> Void)?
+    
+    var navigationStyle: NavigationStyle {
+        return .push
+    }
 }

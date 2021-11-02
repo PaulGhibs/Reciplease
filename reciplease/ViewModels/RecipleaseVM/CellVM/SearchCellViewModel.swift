@@ -1,5 +1,5 @@
 //
-//  ResultCellViewModel.swift
+//  SearchCellViewModel.swift
 //  reciplease
 //
 //  Created by Paul Ghibeaux on 17/09/2021.
@@ -9,6 +9,8 @@ import Foundation
 
 
 class SearchCellViewModel: TableCellViewModel {
+   
+    
     var routingEntry: RoutingEntry?
     
     
@@ -29,9 +31,8 @@ class SearchCellViewModel: TableCellViewModel {
     var title: String
     var clearbutton: String
 
-    // to do have osberved object string
-   
 
+    
     init(name: String, title: String, clearButton: String ,titleHeader: String, IngredientsList: String, buttonTitle: String) {
         self.name = name
         self.title = title
@@ -39,8 +40,9 @@ class SearchCellViewModel: TableCellViewModel {
         self.titleHeader = titleHeader
         self.IngredientsList = IngredientsList
         self.buttonTitle = buttonTitle
-        
     }
 }
+
+
 
 

@@ -26,9 +26,9 @@ class DetailViewCell: UITableViewCell {
         }
         
         self.firstheader.text = tableCVM.titleHeader
-        for text in tableCVM.IngredientsList {
-            self.DetailText.text = text
-        }
+        
+        self.DetailText.text = tableCVM.IngredientsList.description
+        
 
         self.imageHeader.sd_setImage(with: tableCVM.imageHeader, completed: nil)
 

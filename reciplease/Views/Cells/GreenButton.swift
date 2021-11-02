@@ -13,7 +13,6 @@ class GreenButton: UITableViewCell {
     
     @IBOutlet weak var greenButton: UIButton!
     
-    var tempsIngredients = [String]()
 
     override func cellPressed(cellViewModel: CellViewModel, from controller: UIViewController) {
         

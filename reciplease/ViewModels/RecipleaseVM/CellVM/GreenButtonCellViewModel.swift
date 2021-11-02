@@ -25,13 +25,12 @@ class GreenButtonCellViewModel : TableCellViewModel {
     }
  
     var title: String?
-
+    
     
     init(title : String, routingEntry : RoutingEntry?) {
         self.title = title
         self.routingEntry = routingEntry
         self.name = ""
-        
     }
     
     

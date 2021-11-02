@@ -12,6 +12,7 @@
 		61011EFD2708DD5D00642EB2 /* Recipe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61011EFB2708DD5D00642EB2 /* Recipe.xcdatamodeld */; };
 		61045EA9270A24BC00E318A0 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61045EA7270A24BC00E318A0 /* SearchCell.xib */; };
 		61045EAA270A24BC00E318A0 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61045EA8270A24BC00E318A0 /* SearchCell.swift */; };
+		6106840727314B69005E9B23 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6106840627314B69005E9B23 /* Observer.swift */; };
 		6111413827204C8E003A4579 /* alertRouterEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111413727204C8E003A4579 /* alertRouterEntry.swift */; };
 		6111413E27204FED003A4579 /* BasicTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6111413D27204FEC003A4579 /* BasicTableViewController.xib */; };
 		611141442720B746003A4579 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611141432720B746003A4579 /* DetailViewModel.swift */; };
@@ -53,7 +54,6 @@
 		613D020A26F0F75600F06118 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613D020926F0F75600F06118 /* Section.swift */; };
 		61432ADD27246CCA00E8E162 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61432ADC27246CCA00E8E162 /* FavoriteViewModel.swift */; };
 		61432ADF27246D5D00E8E162 /* FavoriteSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61432ADE27246D5D00E8E162 /* FavoriteSection.swift */; };
-		61432AE127246D7A00E8E162 /* FavoriteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61432AE027246D7A00E8E162 /* FavoriteCellViewModel.swift */; };
 		6170D8C126FCEDF500DECF6A /* BasicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6170D8BF26FCEDF500DECF6A /* BasicTableViewController.swift */; };
 		61D8BA8726F0F9190031D494 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8BA8626F0F9190031D494 /* CellViewModel.swift */; };
 		61D8BA8B26F0FD4D0031D494 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D8BA8A26F0FD4D0031D494 /* DataService.swift */; };
@@ -68,6 +68,7 @@
 		61011EFC2708DD5D00642EB2 /* Recipe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Recipe.xcdatamodel; sourceTree = "<group>"; };
 		61045EA7270A24BC00E318A0 /* SearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		61045EA8270A24BC00E318A0 /* SearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		6106840627314B69005E9B23 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		6111413727204C8E003A4579 /* alertRouterEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alertRouterEntry.swift; sourceTree = "<group>"; };
 		6111413D27204FEC003A4579 /* BasicTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicTableViewController.xib; sourceTree = "<group>"; };
 		611141432720B746003A4579 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -111,7 +112,6 @@
 		613D020926F0F75600F06118 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		61432ADC27246CCA00E8E162 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		61432ADE27246D5D00E8E162 /* FavoriteSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSection.swift; sourceTree = "<group>"; };
-		61432AE027246D7A00E8E162 /* FavoriteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoriteCellViewModel.swift; path = reciplease/ViewModels/RecipleaseVM/Sections/FavoriteCellViewModel.swift; sourceTree = SOURCE_ROOT; };
 		6170D8BF26FCEDF500DECF6A /* BasicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableViewController.swift; sourceTree = "<group>"; };
 		61D8BA8626F0F9190031D494 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		61D8BA8A26F0FD4D0031D494 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -150,7 +150,6 @@
 				6132487126F4F05F0097F6D8 /* SearchCellViewModel.swift */,
 				613D01F926F0F4E100F06118 /* RecipesListCellViewModel.swift */,
 				611141472720B7F1003A4579 /* DetailRecipeCellViewModel.swift */,
-				61432AE027246D7A00E8E162 /* FavoriteCellViewModel.swift */,
 			);
 			path = CellVM;
 			sourceTree = "<group>";
@@ -281,6 +280,7 @@
 				613D020626F0F71700F06118 /* ViewModelProtocol.swift */,
 				613D020926F0F75600F06118 /* Section.swift */,
 				61D8BA8626F0F9190031D494 /* CellViewModel.swift */,
+				6106840627314B69005E9B23 /* Observer.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -459,6 +459,7 @@
 			files = (
 				6132485F26F397380097F6D8 /* GreenButtonCellViewModel.swift in Sources */,
 				6132487526F4FF590097F6D8 /* RecipesViewController.swift in Sources */,
+				6106840727314B69005E9B23 /* Observer.swift in Sources */,
 				6132487226F4F05F0097F6D8 /* SearchCellViewModel.swift in Sources */,
 				6132485626F38AC00097F6D8 /* Constants.swift in Sources */,
 				613D01F826F0F46B00F06118 /* RecipeViewSection.swift in Sources */,
@@ -469,7 +470,6 @@
 				6111414D2720CAE6003A4579 /* DetailViewCell.swift in Sources */,
 				611141482720B7F1003A4579 /* DetailRecipeCellViewModel.swift in Sources */,
 				6111414A2720BBA5003A4579 /* DetailViewController.swift in Sources */,
-				61432AE127246D7A00E8E162 /* FavoriteCellViewModel.swift in Sources */,
 				611141462720B764003A4579 /* DetailViewSection.swift in Sources */,
 				61011EFD2708DD5D00642EB2 /* Recipe.xcdatamodeld in Sources */,
 				613D020026F0F53700F06118 /* CellConfigurable.swift in Sources */,

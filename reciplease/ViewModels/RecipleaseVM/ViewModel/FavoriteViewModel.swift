@@ -12,14 +12,37 @@ class FavoriteViewModel: ViewModel {
     
     
     var sections: [Section] = []
-   
-
-    func loadData(callback: @escaping (Error?) -> ()) {
+    var apiService : APIService?
+    
+    
+    var recipes = RecipeCollection(recipes: [])
+    
+ 
+    
+    
+    init(apiService: APIService) {
+        self.apiService = apiService
         
-//        self.sections.append(SearchSection())
-//        callback(nil)
     }
     
-   
+
+    // try notification post here
+  
+
+    func loadData(callback: @escaping (Error?) -> ()) {
+  
+        _ = apiService?.requestRecipe(with: "lemon") { (success, resource) in
+            var tempSections: [Section] = []
+            if success, let resource = resource {
+                self.recipes = resource as! RecipeCollection
+                let currentCollectionSection = RecipeViewSection(collection : self.recipes)
+                tempSections.append(currentCollectionSection)
+                self.sections = tempSections
+                callback(nil)
+
+            }
+        }
+    }
+
 }
 

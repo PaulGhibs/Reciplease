@@ -32,3 +32,7 @@ extension ViewModel {
 }
 
 
+
+protocol FormViewModel: ViewModel {
+    func submitForm(callback: @escaping (Result<recipeSuccess, RecipeError>) -> ())
+}
