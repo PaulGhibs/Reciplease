@@ -10,7 +10,6 @@ import UIKit
 class FavoriteViewController: BasicTableViewController {
     
  
-   
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

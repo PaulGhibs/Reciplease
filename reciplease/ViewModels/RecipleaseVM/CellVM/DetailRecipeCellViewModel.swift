@@ -12,7 +12,7 @@ class DetailRecipeCellViewModel: TableCellViewModel {
     
     
     var height: Float {
-        return 500
+        return 550
     }
     
     var indexPath: IndexPath?
@@ -22,10 +22,10 @@ class DetailRecipeCellViewModel: TableCellViewModel {
     
     var titleHeader: String
     var IngredientsList: [String]
-    var buttonLike: String
+    var buttonLike: Bool
     var imageHeader : URL?
     
-    init(name: String, titleHeader: String, imageHeader: URL?, IngredientsList: [String], buttonLike: String) {
+    init(name: String, titleHeader: String, imageHeader: URL?, IngredientsList: [String], buttonLike: Bool) {
         self.name = name
         self.titleHeader = titleHeader
         self.IngredientsList = IngredientsList

@@ -28,11 +28,13 @@ class FavoriteSection: Section {
         for recipe in collection.recipes {
             let icone = recipe.imageURL
         
+            if recipe.favorites == true {
+                let cellVM = RecipesListCellViewModel(name: "\(recipe.name)",
+                                                 secondName: recipe.ingredientsNeeded,
+                                                 image: icone, duration: recipe.duration, numberOfPeople: recipe.numberOfPeople, routingEntry: DetailRoutingEntry(recipe: recipe))
+                self.cellsVM.append(cellVM)
+            }
             
-            let cellVM = RecipesListCellViewModel(name: "\(recipe.name)",
-                                             secondName: recipe.ingredientsNeeded,
-                                             image: icone, duration: recipe.duration, numberOfPeople: recipe.numberOfPeople, routingEntry: DetailRoutingEntry(recipe: recipe))
-            self.cellsVM.append(cellVM)
         }
         
 

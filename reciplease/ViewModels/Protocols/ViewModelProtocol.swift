@@ -12,6 +12,8 @@ protocol ViewModel {
     var sections: [Section] { get set }
     
     func loadData(callback: @escaping (Error?) -> ())
+    var shouldDisplayBackButton : Bool { get  }
+
 }
 
 extension ViewModel {
@@ -31,8 +33,3 @@ extension ViewModel {
     }
 }
 
-
-
-protocol FormViewModel: ViewModel {
-    func submitForm(callback: @escaping (Result<recipeSuccess, RecipeError>) -> ())
-}

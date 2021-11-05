@@ -23,16 +23,23 @@ class RecipeViewSection: Section {
         
         self.cellsVM = [CellViewModel]()
       
-        
-        for recipe in collection.recipes {
-            let icone = recipe.imageURL
-        
+        if collection.recipes.count == 0 {
+            let empty = EmptyRecipeCellViewModel()
+            cellsVM.append(empty)
+        } else {
             
-            let cellVM = RecipesListCellViewModel(name: "\(recipe.name)",
-                                             secondName: recipe.ingredientsNeeded,
-                                             image: icone, duration: recipe.duration, numberOfPeople: recipe.numberOfPeople, routingEntry: DetailRoutingEntry(recipe: recipe))
-            self.cellsVM.append(cellVM)
+            for recipe in collection.recipes {
+                let icone = recipe.imageURL
+            
+                
+                let cellVM = RecipesListCellViewModel(name: "\(recipe.name)",
+                                                 secondName: recipe.ingredientsNeeded,
+                                                 image: icone, duration: recipe.duration, numberOfPeople: recipe.numberOfPeople, routingEntry: DetailRoutingEntry(recipe: recipe))
+                self.cellsVM.append(cellVM)
+            }
+            
         }
+        
         
 //        for recipe in recipes.recipes {
 //            self.cellsVM.append(RecipeCellViewModel(name: "\(recipe.name)", secondName: "\(recipe.ingredientsNeeded)"))

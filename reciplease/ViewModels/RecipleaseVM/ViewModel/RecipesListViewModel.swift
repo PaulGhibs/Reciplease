@@ -8,24 +8,31 @@
 import Foundation
 
 class RecipesListViewModel : ViewModel {
+    var shouldDisplayBackButton = false
     var sections: [Section] = []
     var apiService : APIService?
   
     // try notification post here
-    @Published var choosenIngredients: String
-
-
-    var recipes = RecipeCollection(recipes: [])
-
-    init(apiService: APIService, choosenIngredient: String) {
-        self.apiService = apiService
-        self.choosenIngredients = choosenIngredient
+    static var choosenIngredient: String {
+        get {
+            return UserDefaults.standard.string(forKey: Ingredients.ingredients) ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Ingredients.ingredients)
+        }
+       
     }
     
+    var recipes = RecipeCollection(recipes: [])
+
+    init(apiService: APIService) {
+        self.apiService = apiService
+    }
     
   
+  
     func loadData(callback: @escaping (Error?) -> ()) {
-        _ = apiService?.requestRecipe(with: choosenIngredients) { (success, resource) in
+        _ = apiService?.requestRecipe(with: RecipesListViewModel.choosenIngredient) { (success, resource) in
             var tempSections: [Section] = []
             if success, let resource = resource {
                 self.recipes = resource as! RecipeCollection
@@ -36,8 +43,11 @@ class RecipesListViewModel : ViewModel {
 
             }
         }
-     
+        
     }
     
+   
+    
+   
     
 }

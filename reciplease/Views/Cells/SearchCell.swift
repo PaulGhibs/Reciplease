@@ -7,11 +7,11 @@
 
 import UIKit
 import Foundation
-import Combine
 
 
-class SearchCell: UITableViewCell {
+class SearchCell: UITableViewCell, UITextViewDelegate {
     
+    @IBOutlet weak var homeImage: UIImageView!
     @IBOutlet weak var YourIngredients: UILabel!
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var titleHeader: UILabel!
@@ -19,28 +19,25 @@ class SearchCell: UITableViewCell {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var ingredientsLists: UITextView!{
         didSet {
-            ingredientsLists.layer.borderColor = UIColor.lightGray.cgColor
             ingredientsLists.layer.cornerRadius = 10
-            ingredientsLists.layer.borderWidth = 1.0
         }
     }
     
     //created a string variable
-    
+  
+    var tempsIngredients = [String]()
+  
     
    
-    
-    var tempsIngredients = [String]() 
-    
-    var viewmodel = SearchSection()
-    private var cancellables: Set<AnyCancellable> = []
-
-    private var cancelBag = Set<AnyCancellable>()
     @IBAction func clearAction(_ sender: UIButton) {
         self.tempsIngredients.removeAll()
         self.ingredientsLists.text = ""
-
-    }
+        
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+        }
     
     
     @IBAction func addIngredients(_ sender: UIButton) {
@@ -49,22 +46,14 @@ class SearchCell: UITableViewCell {
             ingredientsLists.text = "-" + tempsIngredients.joined(separator: "\n-")
             ingredients.text = ""
             // Notify viewModel that we have something in tempsIngredients
+
         }
         
-        viewmodel.fetch()
-        self.tempsIngredients = viewmodel.ingredients
+        RecipesListViewModel.choosenIngredient = tempsIngredients.joined(separator: "\n-")
        
-//        for ingredient in tempsIngredients {
-//            viewmodel.choosenIngredients = ingredient
-//
-//        }
-////
-//        let publisher = ingredientsLists.text.publisher
-//        _ = publisher.sink { value in
-//                self.viewmodel.ingredientsSelect = value
-//        }
-
     }
+    
+  
     
     override func configure(cellViewModel : CellViewModel, from controller: UIViewController) {
         guard let tableCVM = cellViewModel as? SearchCellViewModel else {
@@ -75,30 +64,29 @@ class SearchCell: UITableViewCell {
         addButton.setTitle(tableCVM.buttonTitle, for: .normal)
         addButton.layer.cornerRadius = 2
         YourIngredients.text = tableCVM.title
+        ingredientsLists.delegate = self
         clearButton.setTitle(tableCVM.clearbutton, for: .normal)
-   
+        homeImage.layer.cornerRadius = 20
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+
     }
     
-  
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         return true
     }
     
-    private func bindViewModel() {
-        viewmodel.$ingredients
-            .receive(on: RunLoop.main)
-            .sink { _ in
-                _ = self.tempsIngredients
-                
-            }
-            .store(in: &cancellables)
-       }
+    private func textFieldDidBeginEditing(_ textField: UITextField) {
+        ingredients.isEnabled = false
+    }
     
+   
 }
-
 
 
 

@@ -20,6 +20,7 @@
 //   }
 
 import Foundation
+// structure to manage data
 
 struct RecipeCollection: Decodable {
     let recipes: [Recipe]
@@ -31,7 +32,7 @@ struct RecipeCollection: Decodable {
 struct Recipe {
     let name: String
     let imageURL: URL?
-    let url: String?
+    let url: URL?
     let numberOfPeople: Float
     let duration: Float
     var ingredientsNeeded: [String]
@@ -41,12 +42,12 @@ struct Recipe {
         
         self.name = recipeEntity.name ?? "No name"
         self.imageURL = recipeEntity.image
-        self.url = recipeEntity.url ?? "No url"
+        self.url = recipeEntity.url
         self.numberOfPeople = recipeEntity.person
         self.duration = recipeEntity.totalTime
         self.ingredientsNeeded = [] // Pas content si je mets seulement la ligne en dessous.
         self.ingredientsNeeded = convertDatasToStringArray(ingredients: recipeEntity.ingredients)
-        self.favorites = recipeEntity.favorites
+        self.favorites = recipeEntity.favorite
     }
     
     private func convertDatasToStringArray(ingredients: Data?) -> [String] {
@@ -81,7 +82,7 @@ extension Recipe: Codable {
 
         name = try recipe.decode(String.self, forKey: .name)
         imageURL = try recipe.decode(URL.self, forKey: .imageURL)
-        url = try recipe.decode(String.self, forKey: .url)
+        url = try recipe.decode(URL.self, forKey: .url)
         numberOfPeople = try recipe.decode(Float.self, forKey: .numberOfPeople)
         duration = try recipe.decode(Float.self, forKey: .duration)
         ingredientsNeeded = try recipe.decode([String].self, forKey: .ingredientsNeeded)
@@ -96,6 +97,11 @@ struct MyObject: Decodable {
 
 extension Recipe: Equatable {
     static func == (lhs: Recipe, rhs: RecipeEntry) -> Bool {
-        return lhs.name == rhs.name && lhs.url == rhs.url
+        return lhs.name == rhs.name
     }
+}
+
+
+struct Ingredients{
+    static let ingredients = "ingredients"
 }

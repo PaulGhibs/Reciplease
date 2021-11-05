@@ -24,6 +24,8 @@ class BasicTableViewController: UITableViewController {
         guard let vm = self.viewModel else {
             return 0
         }
+        
+        
         return vm.numberOfItems(in: section)
     }
     
@@ -92,6 +94,7 @@ class BasicTableViewController: UITableViewController {
     public func registerCells() {
         guard let sections = self.viewModel?.sections else { return }
         
+        
         for i in 0..<sections.count {
             var section = sections[i]
             
@@ -106,7 +109,7 @@ class BasicTableViewController: UITableViewController {
                 // We store index path for item
                 item.indexPath = IndexPath(row: j,
                                            section: i)
-                
+              
                 // If we don't have a nibName, we use the default UITableViewCell
                 guard let nibName = item.nibName else {
                     tableView.register(UITableViewCell.self,
@@ -123,6 +126,9 @@ class BasicTableViewController: UITableViewController {
             }
                         
         }
+        
+        
+        
     }
     
 }

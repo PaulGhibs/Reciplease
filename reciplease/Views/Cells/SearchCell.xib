@@ -122,6 +122,7 @@
                 <outlet property="YourIngredients" destination="JXx-Qe-fSz" id="voW-a0-SCA"/>
                 <outlet property="addButton" destination="Kh8-Du-VhJ" id="jjd-kd-N5O"/>
                 <outlet property="clearButton" destination="Lo0-Yc-xfv" id="PrS-xg-CSb"/>
+                <outlet property="homeImage" destination="ylO-aB-Lu3" id="37s-js-gcf"/>
                 <outlet property="ingredients" destination="UrW-AF-kJx" id="Jg5-Dv-36d"/>
                 <outlet property="ingredientsLists" destination="v4u-Tl-8XK" id="Pd6-s6-n4u"/>
                 <outlet property="titleHeader" destination="nkL-Zw-i0A" id="atm-co-oev"/>

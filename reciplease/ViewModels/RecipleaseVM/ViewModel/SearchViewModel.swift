@@ -8,6 +8,8 @@
 import Foundation
 
 class SearchViewModel: ViewModel  {
+    var shouldDisplayBackButton = false
+    
   
     var sections: [Section] = []
     var apiService : APIService

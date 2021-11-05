@@ -9,6 +9,8 @@
 import Foundation
 
 class FavoriteViewModel: ViewModel {
+    var shouldDisplayBackButton = true
+    
     
     
     var sections: [Section] = []
@@ -23,6 +25,7 @@ class FavoriteViewModel: ViewModel {
     init(apiService: APIService) {
         self.apiService = apiService
         
+        
     }
     
 
@@ -31,7 +34,8 @@ class FavoriteViewModel: ViewModel {
 
     func loadData(callback: @escaping (Error?) -> ()) {
   
-        _ = apiService?.requestRecipe(with: "lemon") { (success, resource) in
+   
+        _ = apiService?.requestRecipe(with: "") { (success, resource) in
             var tempSections: [Section] = []
             if success, let resource = resource {
                 self.recipes = resource as! RecipeCollection

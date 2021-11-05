@@ -9,6 +9,8 @@ import Foundation
 
 
 class DetailViewModel: ViewModel {
+    var shouldDisplayBackButton = true
+    
     var sections: [Section] = []
     
     var recipe : Recipe

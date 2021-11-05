@@ -15,9 +15,18 @@ class DetailViewCell: UITableViewCell {
     
     @IBOutlet weak var firstheader: UILabel!
     
-    @IBOutlet weak var DetailText: UILabel!
+    @IBOutlet weak var detailText: UILabel!
+    
+    var recipe : Recipe?
     
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageHeader.layer.cornerRadius = 20
+        imageHeader.layer.masksToBounds = true
+        imageHeader.contentMode = .scaleAspectFill
+        
+    }
     
     override func configure(cellViewModel : CellViewModel, from controller: UIViewController) {
        
@@ -26,15 +35,10 @@ class DetailViewCell: UITableViewCell {
         }
         
         self.firstheader.text = tableCVM.titleHeader
-        
-        self.DetailText.text = tableCVM.IngredientsList.description
-        
-
+        self.detailText.text = tableCVM.IngredientsList.joined(separator: "\n")
+   
         self.imageHeader.sd_setImage(with: tableCVM.imageHeader, completed: nil)
 
-        
-
-    
-}
+    }
     
 }

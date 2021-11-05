@@ -9,16 +9,11 @@ import Foundation
 
 class RecipeRountingEntry : RoutingEntry {
   
-    var ingredient: String
-    
-    init(ingredient : String){
-        self.ingredient = ingredient
-    }
     
     var viewController: Controller? {
         
 
-        let viewModel = RecipesListViewModel(apiService:RecipeRequest(), choosenIngredient: ingredient)
+        let viewModel = RecipesListViewModel(apiService:RecipeRequest())
         
         return RecipesViewController(viewModel: viewModel)
     }
@@ -54,6 +49,30 @@ class DetailRoutingEntry : RoutingEntry {
     
 }
 
+
+class WebRoutingEntry : RoutingEntry {
+    
+    var url : URL?
+    
+    var viewController: Controller? {
+        let viewModel = WebViewModel(url: self.url!)
+        return WebViewController(viewModel: viewModel)
+    }
+    
+    var completionBlock: (() -> Void)?
+    
+    var navigationStyle: NavigationStyle {
+        return .push
+    }
+    
+    init(url : URL?){
+        self.url = url 
+    }
+    
+    
+}
+
+
 class NeedimplementRoutingEntry : RoutingEntry {
     var viewController: Controller?
     
@@ -68,23 +87,3 @@ class NeedimplementRoutingEntry : RoutingEntry {
 }
 
 
-class SuccesLoginRountingEntry : RoutingEntry {
-    
-    var ingredient: String
-    
-    init(ingredient : String){
-        self.ingredient = ingredient
-    }
-    
-    var viewController: Controller? {
-        let viewModel = RecipesListViewModel(apiService: RecipeRequest(), choosenIngredient: ingredient)
-        
-        return BasicTableViewController(viewModel: viewModel)
-    }
-    
-    var completionBlock: (() -> Void)?
-    
-    var navigationStyle: NavigationStyle {
-        return .push
-    }
-}

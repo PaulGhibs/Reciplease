@@ -9,9 +9,6 @@ import UIKit
 
 class RecipesViewController: BasicTableViewController {
     
- 
-   
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
@@ -22,22 +19,17 @@ class RecipesViewController: BasicTableViewController {
         self.navigationController!.navigationBar.backIndicatorImage = renderedImage
         self.navigationController!.navigationBar.backIndicatorTransitionMaskImage = renderedImage
         self.navigationController!.navigationBar.backgroundColor = .systemBackground
-       
-        self.navigationItem.leftBarButtonItem?.title = "Back"
+
+        self.navigationItem.leftBarButtonItem?.title = ""
         let image = UIImage(named: "cook")
         navigationItem.titleView = UIImageView(image: image)
 
-
-
-       
         self.viewModel?.loadData { [weak self] _ in
             self?.registerCells()
             self?.tableView.reloadData()
 
         }
     }
-   
-
     
 
 }

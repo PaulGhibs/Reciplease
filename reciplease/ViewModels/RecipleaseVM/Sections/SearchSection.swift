@@ -6,46 +6,31 @@
 //
 
 import Foundation
-import Combine
 
 
-
-class SearchSection: Section , ObservableObject {
-    
-    
-    
+class SearchSection: Section {
     var position: Int
     
     var title: String
     
     var cellsVM: [CellViewModel]
     
-    let objectWillChange = CurrentValueSubject<String, Never>("")
-
-    @Published private (set) var ingredients: [String] = []
-    var choosenIngredient : String?
     
     init() {
         self.position = 1
         self.title = ""
-   
+        
+       
         self.cellsVM = [CellViewModel]()
         
-        
-        
         let IngredientsSelected = SearchCellViewModel(name: "", title: "Your ingredients: ", clearButton: "Clear", titleHeader: "What's in your fridge ?", IngredientsList: "Lemon,Cheese,Sausages...", buttonTitle: "Add")
-     
-        self.cellsVM.append(IngredientsSelected)
-        fetch()
-
-    }
-    
-    
-    func fetch() {
-           // fetch posts
         
-        let greenButton = GreenButtonCellViewModel(title: "Search for recipes", routingEntry: RecipeRountingEntry(ingredient: (ingredients.joined(separator: ""))))
+        self.cellsVM.append(IngredientsSelected)
+     
+        
+        let greenButton = GreenButtonCellViewModel(title: "Search for recipes", routingEntry: RecipeRountingEntry())
         self.cellsVM.append(greenButton)
-           // assign new data to the posts variable
-       }
+        
+        
+        }
 }

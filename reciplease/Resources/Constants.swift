@@ -35,6 +35,3 @@ struct Endpoint {
 
 }
 
-struct UserDefaultsKeys {
-    static let ingredientsList = "IngredientsList"
-}
