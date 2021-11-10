@@ -22,5 +22,5 @@ protocol TableCellViewModel: CellViewModel {
 
 protocol TableEditedCellViewModel: TableCellViewModel {
     var canEdit : Bool { get }
-    func completionEdit(callback: @escaping (RecipeError?) -> ())
+    func completionEdit(callback: @escaping (Error?) -> ())
 }

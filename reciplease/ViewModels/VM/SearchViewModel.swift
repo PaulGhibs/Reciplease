@@ -14,7 +14,7 @@ class SearchViewModel: ViewModel  {
     var sections: [Section] = []
     var apiService : APIService
     
-   
+    
     init(apiService : APIService){
         self.apiService = apiService
     }
@@ -24,8 +24,5 @@ class SearchViewModel: ViewModel  {
         self.sections.append(SearchSection())
         callback(nil)
     }
-    
-    
-  
-   
+      
 }

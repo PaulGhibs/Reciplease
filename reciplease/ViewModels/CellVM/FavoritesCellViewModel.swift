@@ -1,13 +1,17 @@
 //
-//  TableCellViewModel.swift
+//  FavoritesCellViewModel.swift
 //  reciplease
 //
-//  Created by Paul Ghibeaux on 14/09/2021.
+//  Created by Paul Ghibeaux on 10/11/2021.
 //
 
 import Foundation
 
-class RecipesListCellViewModel: TableCellViewModel {
+class FavoriteCellViewModel: TableEditedCellViewModel {
+   
+    
+    var canEdit = true
+    
     var routingEntry: RoutingEntry?
  
     var height: Float {
@@ -16,7 +20,7 @@ class RecipesListCellViewModel: TableCellViewModel {
     
     
     var indexPath: IndexPath?
-    var nibName: String? = "RecipeViewCell"
+    var nibName: String? = "FavoriteViewCell"
     lazy var reuseIdentifier: String = String(describing: self)
  
     /// Recipes instance
@@ -39,7 +43,9 @@ class RecipesListCellViewModel: TableCellViewModel {
         self.routingEntry = routingEntry
     }
     
-    
+    func completionEdit(callback: @escaping (Error?) -> ()) {
+        
+    }
     
     
 }

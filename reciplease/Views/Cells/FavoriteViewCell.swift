@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class RecipeViewCell: UITableViewCell {
+class FavoriteViewCell: UITableViewCell {
 
     @IBOutlet weak var firstHeader: UILabel!
     
@@ -44,7 +44,7 @@ class RecipeViewCell: UITableViewCell {
     
     
     override func configure(cellViewModel : CellViewModel, from controller: UIViewController) {
-        guard let tableCVM = cellViewModel as? RecipesListCellViewModel else {
+        guard let tableCVM = cellViewModel as? FavoriteCellViewModel else {
             return
         }
         

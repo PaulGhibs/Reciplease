@@ -23,7 +23,7 @@ class SearchSection: Section {
        
         self.cellsVM = [CellViewModel]()
         
-        let IngredientsSelected = SearchCellViewModel(name: "", title: "Your ingredients: ", clearButton: "Clear", titleHeader: "What's in your fridge ?", IngredientsList: "Lemon,Cheese,Sausages...", buttonTitle: "Add")
+        let IngredientsSelected = SearchCellViewModel(name: "", title: "Your ingredients: ", clearButton: "Clear", titleHeader: "What's in your fridge ?", IngredientsList: "Lemon, Cheese, Sausages...", buttonTitle: "Add")
         
         self.cellsVM.append(IngredientsSelected)
      

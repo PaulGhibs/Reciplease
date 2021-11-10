@@ -22,14 +22,17 @@ class DetailRecipeCellViewModel: TableCellViewModel {
     
     var titleHeader: String
     var IngredientsList: [String]
-    var buttonLike: Bool
     var imageHeader : URL?
+    var duration : Float
+    var numberOfPeople: Float
+    var url : URL?
     
-    init(name: String, titleHeader: String, imageHeader: URL?, IngredientsList: [String], buttonLike: Bool) {
+    init(name: String, titleHeader: String, imageHeader: URL?, IngredientsList: [String], duration: Float, likes: Float) {
         self.name = name
         self.titleHeader = titleHeader
         self.IngredientsList = IngredientsList
-        self.buttonLike = buttonLike
+        self.duration = duration
+        self.numberOfPeople = likes
         
         self.imageHeader = imageHeader
     }

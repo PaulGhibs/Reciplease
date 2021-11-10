@@ -1,8 +1,8 @@
 //
-//  alertRouterEntry.swift
+//  AlertRoutingEntry.swift
 //  reciplease
 //
-//  Created by Paul Ghibeaux on 20/10/2021.
+//  Created by Paul Ghibeaux on 10/11/2021.
 //
 
 import Foundation

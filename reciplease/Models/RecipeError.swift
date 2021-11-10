@@ -25,19 +25,4 @@ enum RecipeError: Error {
 }
 }
 
-enum recipeSuccess {
-    case goRouting
-    case ingredientsSendWithSuccess
-   
-    
-    func successMessage() -> String{
-        
-        switch self {
-        case .goRouting :
-            return ""
-        case .ingredientsSendWithSuccess :
-            return NSLocalizedString("ingredientsSendWithSuccess", comment: "ingredients send With success")
-        
-            }
-    }
-}
+

@@ -36,27 +36,8 @@ struct Recipe {
     let numberOfPeople: Float
     let duration: Float
     var ingredientsNeeded: [String]
-    var favorites : Bool?
     
-    init(from recipeEntity: RecipeEntry) {
-        
-        self.name = recipeEntity.name ?? "No name"
-        self.imageURL = recipeEntity.image
-        self.url = recipeEntity.url
-        self.numberOfPeople = recipeEntity.person
-        self.duration = recipeEntity.totalTime
-        self.ingredientsNeeded = [] // Pas content si je mets seulement la ligne en dessous.
-        self.ingredientsNeeded = convertDatasToStringArray(ingredients: recipeEntity.ingredients)
-        self.favorites = recipeEntity.favorite
-    }
-    
-    private func convertDatasToStringArray(ingredients: Data?) -> [String] {
-        guard let datas = ingredients else { return [] }
-            
-        
-        let data = Data(datas)
-        return (try? JSONDecoder().decode([String].self, from: data)) ?? []
-    }
+  
 }
 
 extension Recipe: Codable {
@@ -65,14 +46,11 @@ extension Recipe: Codable {
         case recipe
         case name = "label"
         case imageURL = "image"
-        case url
+        case url = "url"
         case numberOfPeople = "yield"
         case duration = "totalTime"
         case ingredientsNeeded = "ingredientLines"
 
-        case totalDaily
-        case ENERC_KCAL
-        case quantity
     }
 
     init(from decoder: Decoder) throws {
@@ -89,17 +67,6 @@ extension Recipe: Codable {
     }
 }
 
-struct MyObject: Decodable {
-    let label: String
-    let quantity: Float
-    let unit: String
-}
-
-extension Recipe: Equatable {
-    static func == (lhs: Recipe, rhs: RecipeEntry) -> Bool {
-        return lhs.name == rhs.name
-    }
-}
 
 
 struct Ingredients{

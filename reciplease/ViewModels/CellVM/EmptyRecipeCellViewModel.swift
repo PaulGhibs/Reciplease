@@ -8,14 +8,13 @@
 
 import Foundation
 
-class EmptyRecipeCellViewModel : TableCellViewModel{
+class EmptyRecipeCellViewModel : TableCellViewModel {
     
     var height: Float {
         return 300
     }
     
    
-    
     var nibName: String? = "EmptyTableViewCell"
     
     lazy var reuseIdentifier: String = String(describing: self)

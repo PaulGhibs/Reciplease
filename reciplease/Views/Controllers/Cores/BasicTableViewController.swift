@@ -10,6 +10,20 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class BasicTableViewController: UITableViewController {
+    // MARK: - Properties
+
+    var viewModel: ViewModel?
+           
+    // MARK: - Init
+
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: "BasicTableViewController", bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
         
     
         // MARK: - Datasource / delegate
@@ -77,16 +91,46 @@ class BasicTableViewController: UITableViewController {
         return CGFloat(cellVM.height)
     }
     
-    var viewModel: ViewModel?
-                
-    init(viewModel: ViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: "BasicTableViewController", bundle: nil)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        guard let cellVM = self.viewModel?.item(at: indexPath) as? TableEditedCellViewModel else {
+            return
+        }
+        
+        if editingStyle == .delete {
+            cellVM.completionEdit { [weak self] error in
+                guard error != nil else {
+                    let newRouting = Routing()
+                    
+                    let alert = AlertRoutingEntry(message: "error", title: NSLocalizedString("Error", comment: "Error"))
+                    
+                    _ = newRouting
+                        .route(routingEntry: alert, fromController: self!, animated: true)
+                    return
+                }
+                self?.viewModel?.remove(at: indexPath)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            
+        }
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
+   override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        
+        guard let cellVM = self.viewModel?.item(at: indexPath) as? TableEditedCellViewModel else {
+            return .none
+        }
+        
+        if cellVM.canEdit {
+                return .delete
+            }
+            
+            else {
+                return .none
+            }
+       }
+    
+   
   
   
     

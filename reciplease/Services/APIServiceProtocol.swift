@@ -9,9 +9,9 @@ import Foundation
 
 
 protocol APIService {
-     typealias Callback = (Bool, Any?) -> Void
-     func requestRecipe(with ingredients: String, callback: @escaping Callback)
+    typealias Callback = (Bool, Any?) -> Void
+    func requestRecipe(with ingredients: String, callback: @escaping Callback)
     static func createURL(with ingredients: String) throws -> URL?
-     static func parse <T: Decodable>(_ data: Data) -> T
+    static func parse <T: Decodable>(_ data: Data) -> T
     
 }

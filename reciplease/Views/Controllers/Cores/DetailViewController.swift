@@ -6,12 +6,11 @@
 //
 
 import Foundation
-
 import UIKit
 
 class DetailViewController: BasicTableViewController {
-    var isFavourited = false
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -26,26 +25,15 @@ class DetailViewController: BasicTableViewController {
        
         let image = UIImage(named: "cook")
         navigationItem.titleView = UIImageView(image: image)
-        
-        let secod = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
-        let button = UIBarButtonItem(image: secod, style: .plain, target: self, action: #selector(savedFavorites))
 
-        self.navigationItem.rightBarButtonItem = button
-        self.viewModel?.loadData { [weak self] _ in
+        self.viewModel?.loadData { _ in
             
-            self?.registerCells()
-            self?.tableView.reloadData()
+            self.registerCells()
+            self.tableView.reloadData()
         }
     }
     
 
-    @objc func savedFavorites() {
-        
-        DetailViewCell()
-    }
-    
-
-    
-    
-
 }
+
+

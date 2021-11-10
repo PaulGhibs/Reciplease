@@ -36,7 +36,6 @@ class SearchCell: UITableViewCell, UITextViewDelegate {
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
-        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
         }
     
     
@@ -70,16 +69,17 @@ class SearchCell: UITableViewCell, UITextViewDelegate {
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
-        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
 
     }
     
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
+        addIngredients(addButton)
         return true
     }
+    
+    
     
     private func textFieldDidBeginEditing(_ textField: UITextField) {
         ingredients.isEnabled = false

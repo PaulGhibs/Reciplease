@@ -31,5 +31,8 @@ extension ViewModel {
     func item(at indexPath: IndexPath) -> CellViewModel {
         return self.sections[indexPath.section].cellsVM[indexPath.row]
     }
+    mutating func remove(at indexPath : IndexPath) -> () {
+        self.sections[indexPath.section].cellsVM.remove(at: indexPath.row)
+    }
 }
 
