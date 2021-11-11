@@ -38,7 +38,6 @@ class DetailViewCell: UITableViewCell {
             sender.setImage(UIImage(named: "heart"), for: .normal)
 
             likedButton.isSelected = false
-            deleteFavorite()
         }
         
 
@@ -86,24 +85,19 @@ class DetailViewCell: UITableViewCell {
         favorite.name = named
         favorite.imageURL = self.imageHeader.sd_imageURL
         favorite.ingredients = detailText.text
-        favorite.duration = Float(duration.text ?? "") ?? 0
-        
-        
-       
+        if let floatValue = Float(likes.text!) {
+            favorite.people = floatValue
+            print("all good")
+        }
+            
     
+         
         print("recipes saved")
 
         do { try AppDelegate.viewContext.save() }
         catch { print("unable to store favorite: \(error)") }
     }
 
-    private func deleteFavorite() {
-        let favorite = Favorite(context: AppDelegate.viewContext)
-        favorite.managedObjectContext?.delete(favorite)
-//        self.detailedFavorite.managedObjectContext?.delete(self.detailedFavorite)
-        
-        do { try AppDelegate.viewContext.save() }
-        catch { print("unable to delete favorite: \(error)") }
-    }
+  
 }
 

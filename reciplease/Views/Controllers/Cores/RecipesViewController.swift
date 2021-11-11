@@ -19,8 +19,9 @@ class RecipesViewController: BasicTableViewController {
         self.navigationController!.navigationBar.backIndicatorImage = renderedImage
         self.navigationController!.navigationBar.backIndicatorTransitionMaskImage = renderedImage
         self.navigationController!.navigationBar.backgroundColor = .systemBackground
+        self.navigationController?.navigationBar.backItem?.title = " "
 
-        self.navigationItem.leftBarButtonItem?.title = ""
+        
         let image = UIImage(named: "cook")
         navigationItem.titleView = UIImageView(image: image)
 

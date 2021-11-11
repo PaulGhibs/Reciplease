@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 class FavoriteCellViewModel: TableEditedCellViewModel {
    
@@ -32,8 +33,6 @@ class FavoriteCellViewModel: TableEditedCellViewModel {
     var duration : Float
     var numberOfPeople: Float
     
-  
-    
     init(name: String, secondName: [String], image: URL?, duration: Float, numberOfPeople: Float,  routingEntry : RoutingEntry) {
         self.name = name
         self.secondName = secondName
@@ -44,8 +43,11 @@ class FavoriteCellViewModel: TableEditedCellViewModel {
     }
     
     func completionEdit(callback: @escaping (Error?) -> ()) {
+    
+        
         
     }
     
+   
     
 }

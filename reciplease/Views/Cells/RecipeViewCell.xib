@@ -30,7 +30,7 @@
                         <size key="shadowOffset" width="2" height="0.0"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wa1-bw-c9I">
-                        <rect key="frame" x="405" y="15" width="65" height="24"/>
+                        <rect key="frame" x="414" y="5" width="65" height="34"/>
                         <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="65" id="HAR-kf-sRb"/>
@@ -58,7 +58,7 @@
                         <size key="shadowOffset" width="2" height="1"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umc-1y-aix">
-                        <rect key="frame" x="327" y="15" width="70" height="24"/>
+                        <rect key="frame" x="333" y="5" width="70" height="34"/>
                         <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="7h4-qw-sPh"/>
@@ -80,18 +80,18 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="KKK-7M-8dk" secondAttribute="bottom" constant="5" id="1rg-TF-wKt"/>
-                    <constraint firstItem="Wa1-bw-c9I" firstAttribute="leading" secondItem="umc-1y-aix" secondAttribute="trailing" constant="8" id="1zS-QO-Bqu"/>
+                    <constraint firstItem="Wa1-bw-c9I" firstAttribute="leading" secondItem="umc-1y-aix" secondAttribute="trailing" constant="11" id="1zS-QO-Bqu"/>
                     <constraint firstAttribute="trailing" secondItem="sg6-Fu-MFW" secondAttribute="trailing" constant="5" id="2TP-vx-Yw3"/>
                     <constraint firstAttribute="bottom" secondItem="sg6-Fu-MFW" secondAttribute="bottom" id="9A4-Vk-6zy"/>
                     <constraint firstItem="VMe-ln-sLP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FeD-Z6-JVj"/>
                     <constraint firstItem="umc-1y-aix" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="197" id="GaU-wl-T0Q"/>
-                    <constraint firstItem="umc-1y-aix" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="PYj-j2-71B"/>
-                    <constraint firstItem="Wa1-bw-c9I" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Pl1-ul-Nwy"/>
-                    <constraint firstAttribute="trailing" secondItem="Wa1-bw-c9I" secondAttribute="trailing" constant="12" id="WgF-b6-7LV"/>
+                    <constraint firstItem="umc-1y-aix" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="PbQ-So-daf"/>
+                    <constraint firstAttribute="trailing" secondItem="Wa1-bw-c9I" secondAttribute="trailing" constant="3" id="WgF-b6-7LV"/>
                     <constraint firstItem="VMe-ln-sLP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="42" id="ZRd-wN-pfZ"/>
                     <constraint firstItem="KKK-7M-8dk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="eAZ-8x-Md2"/>
                     <constraint firstItem="KKK-7M-8dk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="eLB-L8-LTd"/>
                     <constraint firstAttribute="bottom" secondItem="sg6-Fu-MFW" secondAttribute="bottom" id="hOl-bV-NHG"/>
+                    <constraint firstItem="Wa1-bw-c9I" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="kFa-gf-wTY"/>
                     <constraint firstItem="sg6-Fu-MFW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="m9F-Mi-M1C"/>
                     <constraint firstItem="VMe-ln-sLP" firstAttribute="top" secondItem="umc-1y-aix" secondAttribute="bottom" constant="3" id="nLS-gj-qgB"/>
                     <constraint firstItem="Wa1-bw-c9I" firstAttribute="centerY" secondItem="umc-1y-aix" secondAttribute="centerY" id="s5c-1J-419"/>

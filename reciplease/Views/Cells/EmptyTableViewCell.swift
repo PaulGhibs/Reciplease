@@ -21,7 +21,7 @@ class EmptyTableViewCell: UITableViewCell {
         
         
         self.titleLabel.text = NSLocalizedString("No recipes Found", comment: "Go back to search view")
-        self.subtitleLabel.text = NSLocalizedString("Add recipes from search or check them in later", comment: "If you saved somes recipes there will be here ")
+        self.subtitleLabel.text = NSLocalizedString("There is maybe something wrong with the ingredients typed ? Try again", comment: "If you saved somes recipes there will be here ")
         self.messageImageView.image = UIImage(named: "nothing")
     }
     

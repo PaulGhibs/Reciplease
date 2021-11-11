@@ -20,6 +20,7 @@ class FavoriteViewCell: UITableViewCell {
     
     @IBOutlet weak var numberOfPeople: UILabel!
     
+    @IBOutlet weak var likeLayer: UIImageView!
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -40,6 +41,10 @@ class FavoriteViewCell: UITableViewCell {
         duration.layer.masksToBounds = true
         numberOfPeople.layer.cornerRadius = 12
         numberOfPeople.layer.masksToBounds = true
+        self.likeLayer.layer.borderColor = UIColor.white.cgColor
+        likeLayer.layer.masksToBounds = true
+        likeLayer.layer.cornerRadius = 10
+
     }
     
     
@@ -91,7 +96,7 @@ class FavoriteViewCell: UITableViewCell {
     
     
 
-    
+  
 }
 
 

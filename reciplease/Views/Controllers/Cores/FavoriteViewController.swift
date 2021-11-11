@@ -9,6 +9,8 @@ import UIKit
 
 class FavoriteViewController: BasicTableViewController {
     
+ 
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
@@ -25,14 +27,14 @@ class FavoriteViewController: BasicTableViewController {
         navigationItem.titleView = UIImageView(image: image)
 
 
-        self.viewModel?.loadData { _ in
-            self.registerCells()
-            self.tableView.reloadData()
-
+        self.viewModel?.loadData { [weak self] _ in
+            self?.registerCells()
+            self?.tableView.reloadData()
+           
         }
     }
-   
-
+    
+  
   
 
 }

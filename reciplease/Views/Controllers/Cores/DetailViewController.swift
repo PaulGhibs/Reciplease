@@ -25,6 +25,7 @@ class DetailViewController: BasicTableViewController {
        
         let image = UIImage(named: "cook")
         navigationItem.titleView = UIImageView(image: image)
+        self.navigationController?.navigationBar.backItem?.title = " "
 
         self.viewModel?.loadData { _ in
             

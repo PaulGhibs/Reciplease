@@ -91,26 +91,18 @@ class BasicTableViewController: UITableViewController {
         return CGFloat(cellVM.height)
     }
     
+ 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        guard let cellVM = self.viewModel?.item(at: indexPath) as? TableEditedCellViewModel else {
+        guard (self.viewModel?.item(at: indexPath) as? TableEditedCellViewModel) != nil else {
             return
         }
         
         if editingStyle == .delete {
-            cellVM.completionEdit { [weak self] error in
-                guard error != nil else {
-                    let newRouting = Routing()
-                    
-                    let alert = AlertRoutingEntry(message: "error", title: NSLocalizedString("Error", comment: "Error"))
-                    
-                    _ = newRouting
-                        .route(routingEntry: alert, fromController: self!, animated: true)
-                    return
-                }
-                self?.viewModel?.remove(at: indexPath)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
+      
+            self.viewModel?.remove(at: indexPath)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
             
         }
     }
@@ -130,7 +122,7 @@ class BasicTableViewController: UITableViewController {
             }
        }
     
-   
+
   
   
     

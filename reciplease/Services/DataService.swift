@@ -11,7 +11,7 @@ import Alamofire
 
 class RecipeRequest: APIService {
     
-    private static let recipe = RecipeCollection(recipes: [])
+    static let recipe = RecipeCollection(recipes: [])
     
     func requestRecipe(with ingredients: String, callback: @escaping RecipeRequest.Callback) {
         
@@ -40,10 +40,6 @@ class RecipeRequest: APIService {
     
     static func createURL(with ingredients: String) throws -> URL? {
         let completeURL = Endpoint.searchEndpoint + ingredients
-        
-        
-        print("completeURL", completeURL)
-        
         return URL(string: completeURL)
     }
     

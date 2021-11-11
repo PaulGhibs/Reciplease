@@ -78,7 +78,7 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaZ-zv-BZ9">
-                        <rect key="frame" x="124" y="222" width="73" height="33"/>
+                        <rect key="frame" x="16" y="222" width="288" height="33"/>
                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -101,12 +101,12 @@
                     <constraint firstItem="bRZ-1Q-8QE" firstAttribute="top" secondItem="dh4-gI-klW" secondAttribute="bottom" constant="35" id="7U5-Nd-eQ1"/>
                     <constraint firstItem="bRZ-1Q-8QE" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="A98-BM-Kit"/>
                     <constraint firstItem="dh4-gI-klW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="ADn-5G-XaM"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="jaZ-zv-BZ9" secondAttribute="trailing" constant="107" id="CVA-TH-IZn"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bRZ-1Q-8QE" secondAttribute="bottom" constant="7" id="FUB-S0-PUf"/>
                     <constraint firstItem="mSs-hp-f1b" firstAttribute="top" secondItem="Cmr-P6-dfk" secondAttribute="bottom" constant="8" symbolic="YES" id="IRG-Fg-FlO"/>
                     <constraint firstItem="Cmr-P6-dfk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Id8-Aw-3n2"/>
                     <constraint firstAttribute="trailing" secondItem="xiJ-qw-vLz" secondAttribute="trailing" constant="7" id="LZi-M2-HNR"/>
                     <constraint firstItem="z6H-8u-Zoo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="N5e-kd-uXr"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="jaZ-zv-BZ9" secondAttribute="trailing" id="TqX-Wl-fny"/>
                     <constraint firstItem="z6H-8u-Zoo" firstAttribute="top" secondItem="dh4-gI-klW" secondAttribute="bottom" constant="8" symbolic="YES" id="Trd-H8-2Rl"/>
                     <constraint firstAttribute="bottom" secondItem="xiJ-qw-vLz" secondAttribute="bottom" constant="207" id="oy5-9U-7VQ"/>
                     <constraint firstItem="mSs-hp-f1b" firstAttribute="leading" secondItem="dh4-gI-klW" secondAttribute="trailing" constant="9" id="pAN-w0-f1r"/>
@@ -117,6 +117,7 @@
                     <constraint firstAttribute="bottom" secondItem="Cmr-P6-dfk" secondAttribute="bottom" constant="467.5" id="uL3-FO-Qgb"/>
                     <constraint firstItem="z6H-8u-Zoo" firstAttribute="top" secondItem="jaZ-zv-BZ9" secondAttribute="bottom" constant="8" symbolic="YES" id="uYx-V3-sQm"/>
                     <constraint firstAttribute="trailing" secondItem="bRZ-1Q-8QE" secondAttribute="trailing" constant="5" id="vqo-ch-iWs"/>
+                    <constraint firstItem="jaZ-zv-BZ9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="wsv-vs-LD0"/>
                     <constraint firstItem="bRZ-1Q-8QE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="wtP-ed-lcw"/>
                 </constraints>
             </tableViewCellContentView>

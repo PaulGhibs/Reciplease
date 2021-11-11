@@ -36,8 +36,6 @@ struct Recipe {
     let numberOfPeople: Float
     let duration: Float
     var ingredientsNeeded: [String]
-    
-  
 }
 
 extension Recipe: Codable {
