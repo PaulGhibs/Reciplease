@@ -5,19 +5,7 @@
 //  Created by Paul Ghibeaux on 14/09/2021.
 //
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let welcome = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
 
-//
-// To parse values from Alamofire responses:
-//
-//   Alamofire.request(url).responseWelcome { response in
-//     if let welcome = response.result.value {
-//       ...
-//     }
-//   }
 
 import Foundation
 // structure to manage data
@@ -36,6 +24,17 @@ struct Recipe {
     let numberOfPeople: Float
     let duration: Float
     var ingredientsNeeded: [String]
+    
+    init(name: String, imageURL: URL?, url: URL?, numberOfPeople: Float, duration : Float,  ingredientsNeeded: [String]) {
+        self.name = name
+        self.imageURL = imageURL
+        self.url = url
+        self.numberOfPeople = numberOfPeople
+        self.duration = duration
+    
+        self.ingredientsNeeded = ingredientsNeeded
+        
+    }
 }
 
 extension Recipe: Codable {

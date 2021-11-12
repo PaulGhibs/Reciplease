@@ -8,7 +8,7 @@
 import UIKit
 
 class RecipesViewController: BasicTableViewController {
-    
+    fileprivate var aView : UIView?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
@@ -24,13 +24,31 @@ class RecipesViewController: BasicTableViewController {
         
         let image = UIImage(named: "cook")
         navigationItem.titleView = UIImageView(image: image)
-
+        self.showSpinner()
         self.viewModel?.loadData { [weak self] _ in
             self?.registerCells()
+            self?.stopSpinner()
             self?.tableView.reloadData()
 
         }
     }
     
 
+}
+
+extension RecipesViewController {
+    func showSpinner() {
+        aView = UIView(frame: self.view.frame)
+        aView?.backgroundColor = UIColor.init(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.1)
+        let ai = UIActivityIndicatorView(style: .medium)
+        ai.center = aView!.center
+        ai.startAnimating()
+        aView?.addSubview(ai)
+        self.view.addSubview(aView!)
+        
+    }
+    func stopSpinner() {
+        aView?.removeFromSuperview()
+        aView = nil
+    }
 }

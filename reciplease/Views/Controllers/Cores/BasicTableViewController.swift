@@ -94,17 +94,29 @@ class BasicTableViewController: UITableViewController {
  
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        guard (self.viewModel?.item(at: indexPath) as? TableEditedCellViewModel) != nil else {
+        guard let cellVM = self.viewModel?.item(at: indexPath) as? TableEditedCellViewModel else {
             return
         }
         
         if editingStyle == .delete {
-      
-            self.viewModel?.remove(at: indexPath)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
             
-            
+            cellVM.completionEdit { [weak self] error in
+                guard error != nil else {
+                    let newRouting = Routing()
+
+                    let alert = AlertRoutingEntry(message: "Recipe deleted from favorites", title: NSLocalizedString("⚠️", comment: "Error"))
+
+                    _ = newRouting
+                        .route(routingEntry: alert, fromController: self!, animated: true)
+                    return
+                }
+               
+                self?.viewModel?.remove(at: indexPath)
+                
+                self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+
         }
+    }
     }
     
    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {

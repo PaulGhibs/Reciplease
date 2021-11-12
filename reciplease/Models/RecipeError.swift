@@ -14,13 +14,16 @@ enum RecipeError: Error {
     
     case  badURL
     case  noRecipeFound
+    case deletedFromFavorites
     
     func errorMessages() throws -> String {
         switch self {
         case .badURL:
             return NSLocalizedString("badurl", comment: "Oups ! je n'ai rien trouvé a cette adresse")
         case .noRecipeFound:
-            return NSLocalizedString("failTofoundRecipe", comment: "Impossible de charger le produit!")
+            return NSLocalizedString("failTofoundRecipe", comment: "Impossible de charger la recette!")
+        case .deletedFromFavorites:
+            return NSLocalizedString("⚠️", comment: "recipe have deleted from favorites")
     }
 }
 }

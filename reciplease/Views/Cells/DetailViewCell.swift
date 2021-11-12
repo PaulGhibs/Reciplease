@@ -25,22 +25,25 @@ class DetailViewCell: UITableViewCell {
     /// A detailed favorite recipe
     
     @IBAction func didlikebutton(_ sender: UIButton) {
-        guard let recipeName = firstheader.text
-             else {
-                  return
+        guard let recipeName = firstheader.text else {
+            return
         }
         
         if !likedButton.isSelected {
             sender.setImage(UIImage(named: "filled"), for: .normal)
             likedButton.isSelected = true
+            
+            // notification to vm for favorites boolean value
+            
             storeFavorite(named: recipeName)
         } else {
             sender.setImage(UIImage(named: "heart"), for: .normal)
 
             likedButton.isSelected = false
         }
+       
+       
         
-
     }
     
     override func layoutSubviews() {
@@ -70,6 +73,9 @@ class DetailViewCell: UITableViewCell {
         self.duration.text = String(formatText) + "⏱"
         self.likes.text = String(tableCVM.numberOfPeople.description) + "👍"
         
+     
+        
+   
     }
     
     func formatMinuteSeconds(_ totalSeconds: Int) -> String {
@@ -85,13 +91,15 @@ class DetailViewCell: UITableViewCell {
         favorite.name = named
         favorite.imageURL = self.imageHeader.sd_imageURL
         favorite.ingredients = detailText.text
-        if let floatValue = Float(likes.text!) {
-            favorite.people = floatValue
-            print("all good")
-        }
-            
-    
-         
+        
+        let duration = (self.duration.text! as NSString).floatValue
+
+        favorite.duration = duration
+        
+        let likes = (self.likes.text! as NSString).floatValue
+        favorite.people = likes
+//        let likedButonvalue = self.likedButton.isSelected
+//        favorite.favorited = likedButonvalue
         print("recipes saved")
 
         do { try AppDelegate.viewContext.save() }
@@ -101,3 +109,6 @@ class DetailViewCell: UITableViewCell {
   
 }
 
+extension Notification.Name {
+    static let newLikedRecipe = Notification.Name("new_liked_recipe")
+}

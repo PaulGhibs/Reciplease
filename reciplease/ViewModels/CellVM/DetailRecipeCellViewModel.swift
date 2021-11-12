@@ -26,6 +26,7 @@ class DetailRecipeCellViewModel: TableCellViewModel {
     var duration : Float
     var numberOfPeople: Float
     var url : URL?
+    var favorites : Bool?
     
     init(name: String, titleHeader: String, imageHeader: URL?, IngredientsList: [String], duration: Float, likes: Float) {
         self.name = name
@@ -33,7 +34,7 @@ class DetailRecipeCellViewModel: TableCellViewModel {
         self.IngredientsList = IngredientsList
         self.duration = duration
         self.numberOfPeople = likes
-        
+        self.favorites = false
         self.imageHeader = imageHeader
     }
 }

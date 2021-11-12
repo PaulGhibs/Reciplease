@@ -43,8 +43,34 @@ class FavoriteCellViewModel: TableEditedCellViewModel {
     }
     
     func completionEdit(callback: @escaping (Error?) -> ()) {
-    
+        // delete One record from core data by name
+            let managedContext = AppDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Favorite")
+            fetchRequest.predicate = NSPredicate(format: "name = %@","\(name)")
+               do
+               {
+                   let fetchedResults =  try managedContext.fetch(fetchRequest) as? [NSManagedObject]
+                   for entity in fetchedResults! {
+                       managedContext.delete(entity)
+                       do
+                       {
+                           try managedContext.save()
+                       }
+                       catch let error as Error?
+                       {
+                           callback(error)
+
+                       }
+
+
+                   }
+               }
+               catch _ {
+                   
+
+               }
         
+        callback(nil)
         
     }
     

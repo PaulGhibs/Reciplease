@@ -9,17 +9,16 @@ import XCTest
 
 @testable import reciplease
 
-class HomeVMTests: XCTestCase {
+class SearchVMTests: XCTestCase {
 
     var homeVM: SearchViewModel!
     var mockAPIService: MockService!
         // ----------------------------------
-        //  MARK: - Product Collection -
+        //  MARK: - Search VM -
         //
     override func setUp() {
         super.setUp()
-        mockAPIService = MockService()
-        homeVM = SearchViewModel(apiService: mockAPIService)
+        homeVM = SearchViewModel()
     }
     
     override func tearDown() {
@@ -28,7 +27,7 @@ class HomeVMTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_fetch_collection() {
+    func test_fetch_viewModel() {
         // Given
        
         // When
@@ -36,7 +35,7 @@ class HomeVMTests: XCTestCase {
             XCTAssertNotNil(self.homeVM.sections)
         }
         
-        // Assert
+      
        
     }
     

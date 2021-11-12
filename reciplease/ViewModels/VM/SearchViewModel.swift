@@ -12,12 +12,7 @@ class SearchViewModel: ViewModel  {
     
   
     var sections: [Section] = []
-    var apiService : APIService
-    
-    
-    init(apiService : APIService){
-        self.apiService = apiService
-    }
+   
 
     func loadData(callback: @escaping (Error?) -> ()) {
         

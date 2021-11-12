@@ -62,8 +62,9 @@ class FavoriteViewCell: UITableViewCell {
         let formatText = formatMinuteSeconds(Int(tableCVM.duration))
         self.duration.text = String(formatText) + "⏱"
         self.imageBackground.sd_setImage(with: tableCVM.image, completed: nil)
-         self.numberOfPeople.text = String(tableCVM.numberOfPeople.description) + "👍"
+        self.numberOfPeople.text = String(tableCVM.numberOfPeople.description) + "👍"
         self.numberOfPeople.layer.borderColor = UIColor.white.cgColor
+        
 
     }
     

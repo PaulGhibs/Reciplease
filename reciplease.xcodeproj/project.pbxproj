@@ -38,6 +38,7 @@
 		613248A326F8F9470097F6D8 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613248A226F8F9470097F6D8 /* Navigator.swift */; };
 		613248A726F8F9C80097F6D8 /* UINavigationController+NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613248A626F8F9C80097F6D8 /* UINavigationController+NavController.swift */; };
 		613248A926F8FCB20097F6D8 /* UIViewController+Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613248A826F8FCB20097F6D8 /* UIViewController+Controller.swift */; };
+		613859A5273EB5180047AF09 /* AlertRoutingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613859A4273EB5180047AF09 /* AlertRoutingEntry.swift */; };
 		613D01DD26F0ABA800F06118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613D01DC26F0ABA800F06118 /* AppDelegate.swift */; };
 		613D01DF26F0ABA800F06118 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613D01DE26F0ABA800F06118 /* SceneDelegate.swift */; };
 		613D01E626F0ABA900F06118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 613D01E526F0ABA900F06118 /* Assets.xcassets */; };
@@ -117,6 +118,7 @@
 		613248A226F8F9470097F6D8 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		613248A626F8F9C80097F6D8 /* UINavigationController+NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+NavController.swift"; sourceTree = "<group>"; };
 		613248A826F8FCB20097F6D8 /* UIViewController+Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Controller.swift"; sourceTree = "<group>"; };
+		613859A4273EB5180047AF09 /* AlertRoutingEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRoutingEntry.swift; sourceTree = "<group>"; };
 		613D01D926F0ABA800F06118 /* reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		613D01DC26F0ABA800F06118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		613D01DE26F0ABA800F06118 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				613248A626F8F9C80097F6D8 /* UINavigationController+NavController.swift */,
 				613248A826F8FCB20097F6D8 /* UIViewController+Controller.swift */,
 				611AE85826FA152C007980D2 /* RouterEntry.swift */,
+				613859A4273EB5180047AF09 /* AlertRoutingEntry.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				61F090F6273583420007DC38 /* WebViewController.swift in Sources */,
 				61F090F92735838F0007DC38 /* WebViewModel.swift in Sources */,
 				613248A326F8F9470097F6D8 /* Navigator.swift in Sources */,
+				613859A5273EB5180047AF09 /* AlertRoutingEntry.swift in Sources */,
 				61F090F12735736B0007DC38 /* EmptyRecipeCellViewModel.swift in Sources */,
 				61011EF82708AD0600642EB2 /* APIServiceProtocol.swift in Sources */,
 				61B6D397273ABB6A00F1C3CE /* Favorite.swift in Sources */,
