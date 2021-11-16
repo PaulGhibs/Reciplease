@@ -11,6 +11,7 @@ import Foundation
 // structure to manage data
 
 struct RecipeCollection: Decodable {
+    // array of recipe
     let recipes: [Recipe]
 
     enum CodingKeys: String, CodingKey {
@@ -18,25 +19,27 @@ struct RecipeCollection: Decodable {
     }
 }
 struct Recipe {
+    
     let name: String
     let imageURL: URL?
     let url: URL?
     let numberOfPeople: Float
     let duration: Float
     var ingredientsNeeded: [String]
+    var isFavorited : Bool?
     
-    init(name: String, imageURL: URL?, url: URL?, numberOfPeople: Float, duration : Float,  ingredientsNeeded: [String]) {
+    init(name: String, imageURL: URL?, url: URL?, numberOfPeople: Float, duration : Float,  ingredientsNeeded: [String], isFavorited: Bool?) {
         self.name = name
         self.imageURL = imageURL
         self.url = url
         self.numberOfPeople = numberOfPeople
         self.duration = duration
-    
+        self.isFavorited = isFavorited
         self.ingredientsNeeded = ingredientsNeeded
         
     }
 }
-
+// extension codable recipe
 extension Recipe: Codable {
     
     enum Rename: String, CodingKey {
@@ -49,7 +52,7 @@ extension Recipe: Codable {
         case ingredientsNeeded = "ingredientLines"
 
     }
-
+    // decode from json
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Rename.self)
 
@@ -66,6 +69,7 @@ extension Recipe: Codable {
 
 
 
-struct Ingredients{
+struct Ingredients {
+    // ingredients typed by users 
     static let ingredients = "ingredients"
 }

@@ -39,6 +39,9 @@
 		613248A726F8F9C80097F6D8 /* UINavigationController+NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613248A626F8F9C80097F6D8 /* UINavigationController+NavController.swift */; };
 		613248A926F8FCB20097F6D8 /* UIViewController+Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613248A826F8FCB20097F6D8 /* UIViewController+Controller.swift */; };
 		613859A5273EB5180047AF09 /* AlertRoutingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613859A4273EB5180047AF09 /* AlertRoutingEntry.swift */; };
+		613859AB274171870047AF09 /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613859AA274171870047AF09 /* DetailViewModelTests.swift */; };
+		613859B32741758E0047AF09 /* recipleaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613859B22741758E0047AF09 /* recipleaseUITests.swift */; };
+		613859B52741758E0047AF09 /* recipleaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613859B42741758E0047AF09 /* recipleaseUITestsLaunchTests.swift */; };
 		613D01DD26F0ABA800F06118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613D01DC26F0ABA800F06118 /* AppDelegate.swift */; };
 		613D01DF26F0ABA800F06118 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613D01DE26F0ABA800F06118 /* SceneDelegate.swift */; };
 		613D01E626F0ABA900F06118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 613D01E526F0ABA900F06118 /* Assets.xcassets */; };
@@ -52,7 +55,6 @@
 		613D020A26F0F75600F06118 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613D020926F0F75600F06118 /* Section.swift */; };
 		61432ADD27246CCA00E8E162 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61432ADC27246CCA00E8E162 /* FavoriteViewModel.swift */; };
 		61432ADF27246D5D00E8E162 /* FavoriteSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61432ADE27246D5D00E8E162 /* FavoriteSection.swift */; };
-		61501856273D68CE00F28443 /* recipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61501855273D68CE00F28443 /* recipleaseTests.swift */; };
 		6150185D273D695300F28443 /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6150185C273D695300F28443 /* MockAPIService.swift */; };
 		6150185F273D697400F28443 /* SearchViewModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6150185E273D697400F28443 /* SearchViewModelsTests.swift */; };
 		61501861273D725B00F28443 /* RecipeViewModeltests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61501860273D725B00F28443 /* RecipeViewModeltests.swift */; };
@@ -76,6 +78,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		613859B62741758E0047AF09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 613D01D126F0ABA700F06118 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 613D01D826F0ABA800F06118;
+			remoteInfo = reciplease;
+		};
 		61501857273D68CE00F28443 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 613D01D126F0ABA700F06118 /* Project object */;
@@ -119,6 +128,10 @@
 		613248A626F8F9C80097F6D8 /* UINavigationController+NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+NavController.swift"; sourceTree = "<group>"; };
 		613248A826F8FCB20097F6D8 /* UIViewController+Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Controller.swift"; sourceTree = "<group>"; };
 		613859A4273EB5180047AF09 /* AlertRoutingEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRoutingEntry.swift; sourceTree = "<group>"; };
+		613859AA274171870047AF09 /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
+		613859B02741758E0047AF09 /* recipleaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = recipleaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		613859B22741758E0047AF09 /* recipleaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipleaseUITests.swift; sourceTree = "<group>"; };
+		613859B42741758E0047AF09 /* recipleaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipleaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		613D01D926F0ABA800F06118 /* reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		613D01DC26F0ABA800F06118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		613D01DE26F0ABA800F06118 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,7 +148,6 @@
 		61432ADC27246CCA00E8E162 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		61432ADE27246D5D00E8E162 /* FavoriteSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSection.swift; sourceTree = "<group>"; };
 		61501853273D68CE00F28443 /* recipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = recipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		61501855273D68CE00F28443 /* recipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipleaseTests.swift; sourceTree = "<group>"; };
 		6150185C273D695300F28443 /* MockAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIService.swift; sourceTree = "<group>"; };
 		6150185E273D697400F28443 /* SearchViewModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelsTests.swift; sourceTree = "<group>"; };
 		61501860273D725B00F28443 /* RecipeViewModeltests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModeltests.swift; sourceTree = "<group>"; };
@@ -160,6 +172,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		613859AD2741758E0047AF09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		613D01D626F0ABA800F06118 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,11 +237,21 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		613859B12741758E0047AF09 /* recipleaseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				613859B22741758E0047AF09 /* recipleaseUITests.swift */,
+				613859B42741758E0047AF09 /* recipleaseUITestsLaunchTests.swift */,
+			);
+			path = recipleaseUITests;
+			sourceTree = "<group>";
+		};
 		613D01D026F0ABA700F06118 = {
 			isa = PBXGroup;
 			children = (
 				613D01DB26F0ABA800F06118 /* reciplease */,
 				61501854273D68CE00F28443 /* recipleaseTests */,
+				613859B12741758E0047AF09 /* recipleaseUITests */,
 				613D01DA26F0ABA800F06118 /* Products */,
 				784B3556520ABB4F6D805DDF /* Pods */,
 				6A568DBF7FA68E1C7C6DDA07 /* Frameworks */,
@@ -234,6 +263,7 @@
 			children = (
 				613D01D926F0ABA800F06118 /* reciplease.app */,
 				61501853273D68CE00F28443 /* recipleaseTests.xctest */,
+				613859B02741758E0047AF09 /* recipleaseUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -344,10 +374,10 @@
 		61501854273D68CE00F28443 /* recipleaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				61501855273D68CE00F28443 /* recipleaseTests.swift */,
 				6150185C273D695300F28443 /* MockAPIService.swift */,
 				6150185E273D697400F28443 /* SearchViewModelsTests.swift */,
 				61501860273D725B00F28443 /* RecipeViewModeltests.swift */,
+				613859AA274171870047AF09 /* DetailViewModelTests.swift */,
 				61501862273D727400F28443 /* FavoriteViewModelTests.swift */,
 			);
 			path = recipleaseTests;
@@ -410,6 +440,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		613859AF2741758E0047AF09 /* recipleaseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 613859B82741758E0047AF09 /* Build configuration list for PBXNativeTarget "recipleaseUITests" */;
+			buildPhases = (
+				613859AC2741758E0047AF09 /* Sources */,
+				613859AD2741758E0047AF09 /* Frameworks */,
+				613859AE2741758E0047AF09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				613859B72741758E0047AF09 /* PBXTargetDependency */,
+			);
+			name = recipleaseUITests;
+			productName = recipleaseUITests;
+			productReference = 613859B02741758E0047AF09 /* recipleaseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		613D01D826F0ABA800F06118 /* reciplease */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 613D01ED26F0ABA900F06118 /* Build configuration list for PBXNativeTarget "reciplease" */;
@@ -456,6 +504,10 @@
 				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					613859AF2741758E0047AF09 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 613D01D826F0ABA800F06118;
+					};
 					613D01D826F0ABA800F06118 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -480,11 +532,19 @@
 			targets = (
 				613D01D826F0ABA800F06118 /* reciplease */,
 				61501852273D68CE00F28443 /* recipleaseTests */,
+				613859AF2741758E0047AF09 /* recipleaseUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		613859AE2741758E0047AF09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		613D01D726F0ABA800F06118 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -555,6 +615,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		613859AC2741758E0047AF09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				613859B32741758E0047AF09 /* recipleaseUITests.swift in Sources */,
+				613859B52741758E0047AF09 /* recipleaseUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		613D01D526F0ABA800F06118 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -616,9 +685,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				61501861273D725B00F28443 /* RecipeViewModeltests.swift in Sources */,
+				613859AB274171870047AF09 /* DetailViewModelTests.swift in Sources */,
 				6150185F273D697400F28443 /* SearchViewModelsTests.swift in Sources */,
 				6150185D273D695300F28443 /* MockAPIService.swift in Sources */,
-				61501856273D68CE00F28443 /* recipleaseTests.swift in Sources */,
 				61501863273D727400F28443 /* FavoriteViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -626,6 +695,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		613859B72741758E0047AF09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 613D01D826F0ABA800F06118 /* reciplease */;
+			targetProxy = 613859B62741758E0047AF09 /* PBXContainerItemProxy */;
+		};
 		61501858273D68CE00F28443 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 613D01D826F0ABA800F06118 /* reciplease */;
@@ -645,6 +719,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		613859B92741758E0047AF09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3PYTVA23ZB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ghb.recipleaseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = reciplease;
+			};
+			name = Debug;
+		};
+		613859BA2741758E0047AF09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3PYTVA23ZB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ghb.recipleaseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = reciplease;
+			};
+			name = Release;
+		};
 		613D01EB26F0ABA900F06118 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -854,6 +976,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		613859B82741758E0047AF09 /* Build configuration list for PBXNativeTarget "recipleaseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				613859B92741758E0047AF09 /* Debug */,
+				613859BA2741758E0047AF09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		613D01D426F0ABA700F06118 /* Build configuration list for PBXProject "reciplease" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

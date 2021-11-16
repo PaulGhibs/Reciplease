@@ -10,11 +10,10 @@ import Foundation
 
 
 enum RecipeError: Error {
-    typealias RawValue = String
     
     case  badURL
     case  noRecipeFound
-    case deletedFromFavorites
+    case  deletedFromFavorites
     
     func errorMessages() throws -> String {
         switch self {

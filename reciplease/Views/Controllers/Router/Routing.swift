@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// defining routing by conforming to navigator protocol
 class Routing: NSObject, Navigator {
     
     // MARK: - Navigator

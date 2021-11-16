@@ -27,18 +27,33 @@ class SearchVMTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_fetch_viewModel() {
+    func test_fetch_vm() {
         // Given
-       
         // When
         homeVM.loadData {_ in
             XCTAssertNotNil(self.homeVM.sections)
         }
         
-      
-       
+        // Assert
+        XCTAssertNil(mockAPIService?.loadDataIsCalled)
     }
     
+    func test_fetch_vm_failed() {
+        
+        // Given a failed fetch with a certain failure
+        let error = try? RecipeError.noRecipeFound.errorMessages()
+        
+        // When
+        _ = mockAPIService?.fakerecipeTab.remove(at: 1)
+        
+        mockAPIService?.fetchFail(error: (RecipeError.noRecipeFound))
+        
+        // Sut should display predefined error message
+        XCTAssertFalse(false, error.debugDescription)
 
+    }
+    
+    
+   
     
 }

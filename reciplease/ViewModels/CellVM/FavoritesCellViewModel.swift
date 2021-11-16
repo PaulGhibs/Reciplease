@@ -9,12 +9,12 @@ import Foundation
 import CoreData
 
 class FavoriteCellViewModel: TableEditedCellViewModel {
-   
+    
     
     var canEdit = true
     
     var routingEntry: RoutingEntry?
- 
+    
     var height: Float {
         return 185
     }
@@ -23,11 +23,11 @@ class FavoriteCellViewModel: TableEditedCellViewModel {
     var indexPath: IndexPath?
     var nibName: String? = "FavoriteViewCell"
     lazy var reuseIdentifier: String = String(describing: self)
- 
+    
     /// Recipes instance
-  
+    
     var name : String
-   
+    
     var secondName: [String]
     var image: URL?
     var duration : Float
@@ -44,36 +44,26 @@ class FavoriteCellViewModel: TableEditedCellViewModel {
     
     func completionEdit(callback: @escaping (Error?) -> ()) {
         // delete One record from core data by name
-            let managedContext = AppDelegate.persistentContainer.viewContext
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Favorite")
-            fetchRequest.predicate = NSPredicate(format: "name = %@","\(name)")
-               do
-               {
-                   let fetchedResults =  try managedContext.fetch(fetchRequest) as? [NSManagedObject]
-                   for entity in fetchedResults! {
-                       managedContext.delete(entity)
-                       do
-                       {
-                           try managedContext.save()
-                       }
-                       catch let error as Error?
-                       {
-                           callback(error)
-
-                       }
-
-
-                   }
-               }
-               catch _ {
-                   
-
-               }
-        
+        let managedContext = AppDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Favorite")
+        fetchRequest.predicate = NSPredicate(format: "name = %@","\(name)")
+        let fetchedResults =  try? managedContext.fetch(fetchRequest) as? [NSManagedObject]
+        for entity in fetchedResults! {
+            managedContext.delete(entity)
+            do
+            {
+                try managedContext.save()
+            }
+            catch
+            {
+                callback(RecipeError.deletedFromFavorites)
+                
+            }
+        }
         callback(nil)
         
     }
     
-   
+    
     
 }

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// recipe routing entry
 class RecipeRountingEntry : RoutingEntry {
   
     
@@ -25,7 +25,7 @@ class RecipeRountingEntry : RoutingEntry {
     
 }
 
-
+// detail routing entry
 class DetailRoutingEntry : RoutingEntry {
   
     var recipe : Recipe
@@ -49,7 +49,7 @@ class DetailRoutingEntry : RoutingEntry {
     
 }
 
-
+// web routing entry
 class WebRoutingEntry : RoutingEntry {
     
     var url : URL?
@@ -72,18 +72,5 @@ class WebRoutingEntry : RoutingEntry {
     
 }
 
-
-class NeedimplementRoutingEntry : RoutingEntry {
-    var viewController: Controller?
-    
-    var completionBlock: (() -> Void)? = {
-        print("need to implement")
-    }
-    var navigationStyle: NavigationStyle {
-        return .push
-    }
-
-    
-}
 
 

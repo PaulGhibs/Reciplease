@@ -19,9 +19,7 @@ class FavoriteViewCell: UITableViewCell {
     @IBOutlet weak var duration: UILabel!
     
     @IBOutlet weak var numberOfPeople: UILabel!
-    
-    @IBOutlet weak var likeLayer: UIImageView!
-    
+        
     override func layoutSubviews() {
         super.layoutSubviews()
         firstHeader.layer.shadowRadius = 5.0 //set shadow radius to your desired value.
@@ -41,10 +39,7 @@ class FavoriteViewCell: UITableViewCell {
         duration.layer.masksToBounds = true
         numberOfPeople.layer.cornerRadius = 12
         numberOfPeople.layer.masksToBounds = true
-        self.likeLayer.layer.borderColor = UIColor.white.cgColor
-        likeLayer.layer.masksToBounds = true
-        likeLayer.layer.cornerRadius = 10
-
+     
     }
     
     

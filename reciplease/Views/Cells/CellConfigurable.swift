@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// protocol cell for datasources in tablesview
 
 @objc protocol CellConfigurable {
     func configure(cellViewModel: CellViewModel, from controller: UIViewController)
@@ -16,7 +17,7 @@ import UIKit
 
 
 extension UITableViewCell: CellConfigurable {
-    
+    // each cell can be pressed and is configured at cellawakefromnib equivalent
     func cellPressed(cellViewModel: CellViewModel, from controller: UIViewController) {
         // Do something if needed or override on subclasses
     }

@@ -13,6 +13,8 @@ class SearchViewController: BasicTableViewController {
         self.navigationController?.navigationBar.backItem?.title = "Reciplease"
 
     }
+    
+    // viewdidload because we only need one load and not many 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground

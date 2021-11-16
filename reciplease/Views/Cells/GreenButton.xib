@@ -36,6 +36,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <accessibility key="accessibilityConfiguration">
+                <accessibilityTraits key="traits" button="YES"/>
+            </accessibility>
             <connections>
                 <outlet property="greenButton" destination="lcd-vn-hKa" id="kPb-Uq-orq"/>
             </connections>

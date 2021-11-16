@@ -10,10 +10,10 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
  
-    
-   
+    // MARK: - View did load
     override func viewDidLoad() {
         super.viewDidLoad()
+        // tab bar appearance
         view.backgroundColor = .systemBackground
         self.tabBar.tintColor = UIColor.darkGray
         self.tabBar.backgroundColor = UIColor.systemBackground
@@ -24,7 +24,7 @@ class TabBarViewController: UITabBarController {
         appearance.setTitleTextAttributes(attributes as [NSAttributedString.Key : Any], for: .normal)
 
         setupVCs()
-   
+        // tab bar separator
         if let items = self.tabBar.items {
         //Get the height of the tab bar
         let height = self.tabBar.bounds.height+2
@@ -62,9 +62,10 @@ class TabBarViewController: UITabBarController {
     
    
     
-    
+    // MARK: - Methods
     func setupVCs() {
             viewControllers = [
+                // two controllers the search one and the favorite
                 createNavController(for: SearchViewController(viewModel: SearchViewModel()), title: NSLocalizedString("Search", comment: ""), image: UIImage(systemName: "magnifyingglass")!),
                 createNavController(for: FavoriteViewController(viewModel: FavoriteViewModel()), title: NSLocalizedString("Favorite", comment: ""), image: UIImage(systemName: "suit.heart")!),
                 

@@ -15,7 +15,13 @@ class FavoriteViewModel: ViewModel {
     var sections: [Section] = []
     
     var recipesFav = RecipeCollection(recipes: [])
-   
+    
+    var isLoading: Bool = false {
+        didSet {
+            self.updateLoadingStatus?()
+        }
+    }
+    var updateLoadingStatus: (()->())?
   
     func loadData(callback: @escaping (Error?) -> ()) {
        
@@ -33,23 +39,26 @@ class FavoriteViewModel: ViewModel {
             let url = favorite.url
             let people = favorite.people 
             let duration = favorite.duration
+            let isFavorited = favorite.liked
             
-            let newrecipe = Recipe.init(name: name, imageURL: imageUrl, url: url, numberOfPeople: people, duration: duration, ingredientsNeeded: ["\(ingredients ?? "")"])
+            let newrecipe = Recipe.init(name: name, imageURL: imageUrl, url: url, numberOfPeople: people, duration: duration, ingredientsNeeded: ["\(ingredients ?? "")"], isFavorited : isFavorited)
             tempsRecipe.append(newrecipe)
          
         }
         
-    
+
         
         let tempsRecipeCollection = RecipeCollection.init(recipes: tempsRecipe)
         self.recipesFav = tempsRecipeCollection
        
+        self.isLoading = true
+
         let currentCollectionSection = FavoriteSection(collection : self.recipesFav)
         tempSections.append(currentCollectionSection)
         
         
         self.sections = tempSections
-        callback(nil)
+        callback(RecipeError.deletedFromFavorites)
     }
 
 }

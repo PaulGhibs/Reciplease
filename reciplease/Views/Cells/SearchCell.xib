@@ -37,6 +37,7 @@
                     <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UrW-AF-kJx">
                         <rect key="frame" x="9" y="108" width="225" height="40"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="ingredientsTextField"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="tY7-4q-dq6"/>
                             <constraint firstAttribute="width" constant="225" id="vUz-KS-1z2"/>
@@ -74,6 +75,7 @@
                     <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kh8-Du-VhJ">
                         <rect key="frame" x="255" y="113" width="46" height="33"/>
                         <color key="backgroundColor" red="0.34933763740000001" green="0.57565307619999995" blue="0.38428515200000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <accessibility key="accessibilityConfiguration" identifier="addButton"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="46" id="3Qe-z1-7sb"/>
                         </constraints>

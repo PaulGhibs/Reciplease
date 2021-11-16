@@ -9,6 +9,7 @@
 import Foundation
 
 @objc protocol RoutingEntry {
+    // routing entry protocol
     
     var navigationStyle: NavigationStyle { get }
     var viewController: Controller? { get }
@@ -17,7 +18,7 @@ import Foundation
 }
 
 @objc protocol Controller {
-    
+    // controller protocol 
     var presentedController: Controller? { get }
     var navController: NavController? { get }
 

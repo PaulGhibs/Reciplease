@@ -8,7 +8,7 @@
 import Foundation
 
 @objc protocol NavController: Controller {
-    
+    // protocol nav controller for moving from one controller to another
     func push(controller: Controller, animated: Bool)
     func popController(animated: Bool)
     

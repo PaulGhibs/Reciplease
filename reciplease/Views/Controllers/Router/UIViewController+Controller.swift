@@ -7,8 +7,10 @@
 
 import UIKit
 
-extension UIViewController: Controller {
 
+// extension ViewController for protocol controller
+extension UIViewController: Controller {
+    
     var presentedController: Controller? {
         return self.presentedViewController
     }

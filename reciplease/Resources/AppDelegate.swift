@@ -42,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "reciplease")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+
             if let error = error as NSError? {
             fatalError("Unresolved error \(error), \(error.userInfo)")
             }
@@ -56,9 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
-
-    // MARK: - Core Data Saving support
-
 
 }
 

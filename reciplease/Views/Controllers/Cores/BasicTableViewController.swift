@@ -14,7 +14,7 @@ class BasicTableViewController: UITableViewController {
 
     var viewModel: ViewModel?
            
-    // MARK: - Init
+    // MARK: - Init viewmodels
 
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
@@ -28,6 +28,7 @@ class BasicTableViewController: UITableViewController {
     
         // MARK: - Datasource / delegate
     override func numberOfSections(in tableView: UITableView) -> Int {
+        // each view models function protocol is here and below
         guard let vm = self.viewModel else {
             return 0
         }
@@ -59,7 +60,7 @@ class BasicTableViewController: UITableViewController {
         guard let cellVM = self.viewModel?.item(at: indexPath) else {
             return
         }
-            
+        // cell pressed and configure protocol
         cell.configure(cellViewModel: cellVM,
                        from: self)
     
@@ -71,6 +72,8 @@ class BasicTableViewController: UITableViewController {
         }
                         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellVM.reuseIdentifier)
+        // cell pressed and configure protocol
+
         cell?.cellPressed(cellViewModel: cellVM,
                           from: self)
     }
@@ -79,7 +82,8 @@ class BasicTableViewController: UITableViewController {
         guard let cellVM = self.viewModel?.item(at: indexPath) as? TableCellViewModel else {
             return UITableView.automaticDimension
         }
-        
+        // cell vm configure protocol
+
         return CGFloat(cellVM.height)
     }
     
@@ -87,10 +91,14 @@ class BasicTableViewController: UITableViewController {
         guard let cellVM = self.viewModel?.item(at: indexPath) as? TableCellViewModel else {
             return 0
         }
-        
+        // cell vm configure protocol
+
         return CGFloat(cellVM.height)
     }
     
+    
+    // MARK: - Editing Cell for TableEditedCellViewModel
+
  
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
@@ -101,6 +109,9 @@ class BasicTableViewController: UITableViewController {
         if editingStyle == .delete {
             
             cellVM.completionEdit { [weak self] error in
+                self!.viewModel?.remove(at: indexPath)
+                
+                self!.tableView.deleteRows(at: [indexPath], with: .automatic)
                 guard error != nil else {
                     let newRouting = Routing()
 
@@ -111,16 +122,15 @@ class BasicTableViewController: UITableViewController {
                     return
                 }
                
-                self?.viewModel?.remove(at: indexPath)
                 
-                self?.tableView.deleteRows(at: [indexPath], with: .automatic)
 
         }
     }
     }
     
    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        
+            // cell vm delete func protocol
+
         guard let cellVM = self.viewModel?.item(at: indexPath) as? TableEditedCellViewModel else {
             return .none
         }
@@ -138,8 +148,9 @@ class BasicTableViewController: UITableViewController {
   
   
     
-    // MARK: - Register
+    // MARK: - Register Cells
     public func registerCells() {
+        // vm sections
         guard let sections = self.viewModel?.sections else { return }
         
         

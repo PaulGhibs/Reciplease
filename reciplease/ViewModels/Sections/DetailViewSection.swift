@@ -26,7 +26,7 @@ class DetailViewSection: Section {
         self.cellsVM = [CellViewModel]()
       
         
-        let cellVM = DetailRecipeCellViewModel(name: recipe.name, titleHeader: recipe.name, imageHeader: recipe.imageURL, IngredientsList: recipe.ingredientsNeeded, duration: recipe.duration, likes: recipe.numberOfPeople)
+        let cellVM = DetailRecipeCellViewModel(name: recipe.name, titleHeader: recipe.name, imageHeader: recipe.imageURL, IngredientsList: recipe.ingredientsNeeded, duration: recipe.duration, likes: recipe.numberOfPeople, favorites: recipe.isFavorited)
         let greenButton = GreenButtonCellViewModel(title: "Get Directions", routingEntry: WebRoutingEntry(url: recipe.url))
 
         self.cellsVM.append(cellVM)

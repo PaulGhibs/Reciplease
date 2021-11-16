@@ -7,8 +7,9 @@
 
 
 import Foundation
-
+//protocol navigator for each controllers
 protocol Navigator {
+    
     var lastRoutingEntry: RoutingEntry? { get set }
     func visibleViewController() -> Controller?
     func visibleViewController(_ rootViewController: Controller?) -> Controller?
@@ -17,7 +18,7 @@ protocol Navigator {
                animated: Bool) -> Navigator
 }
 
-
+// enum for navigation
 @objc enum NavigationStyle: Int {
     case push
     case pop

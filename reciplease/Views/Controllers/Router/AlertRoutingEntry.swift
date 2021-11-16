@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+
+// alert routing entry for deleted favorites
 class AlertRoutingEntry : RoutingEntry {
     
     var message : String
