@@ -8,11 +8,13 @@
 
 import Foundation
 import Alamofire
+// MARK: - RecipeRequest class
 
 class RecipeRequest: APIService {
-    // properties
+    // MARK: - Properties
     static let recipe = RecipeCollection(recipes: [])
     
+    // request list of recipe
     func requestRecipe(with ingredients: String, callback: @escaping RecipeRequest.Callback) {
         // Try api call or return callback false nil if url is good
         let url: URL!
@@ -24,15 +26,14 @@ class RecipeRequest: APIService {
         
         // make the api call with alamo if the adress is good
         
-        
         AF.request(url, method: .get).responseJSON { response in
-            // parse data if sucess
+            // parse data if sucess and callback true
             switch response.result {
             case .success:
                 let resource: RecipeCollection = RecipeRequest.parse(response.data!)
                 print(resource)
                 callback(true, resource)
-                // print error if failure 
+                // print error if failure and callback false
             case .failure(let error):
                 print("Error : \(error)" )
                 
@@ -43,7 +44,7 @@ class RecipeRequest: APIService {
     }
     
     static func createURL(with ingredients: String) throws -> URL? {
-        // create url with ingredients typed by users
+        // create url with ingredients typed by users & endpoint made from constants
 
         let completeURL = Endpoint.searchEndpoint + ingredients
         return URL(string: completeURL)
@@ -55,19 +56,12 @@ class RecipeRequest: APIService {
         do {
             let recipe = try JSONDecoder().decode(RecipeCollection.self, from: data)
             return recipe
-        } catch DecodingError.dataCorrupted(let context) {
-            print(context.debugDescription)
-        } catch DecodingError.keyNotFound(let key, let context) {
-            print("\(key.stringValue) was not found, \(context.debugDescription)")
-        } catch DecodingError.typeMismatch(let type, let context) {
-            print("\(type) was expected, \(context.debugDescription)")
-        } catch DecodingError.valueNotFound(let type, let context) {
-            print("no value was found for \(type), \(context.debugDescription)")
         } catch {
-            print("Unknown error")
+            print("\(String(describing: try? RecipeError.noRecipeFound.errorMessages()))")
         }
-        // result as recipecollection init above
-        return RecipeRequest.recipe as! RecipeCollection
+       
+        // result as recipecollection above
+        return self.recipe as! RecipeCollection
     }
     
 }

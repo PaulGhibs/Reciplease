@@ -16,7 +16,7 @@ class FavoriteViewModelTests: XCTestCase {
     var mockAPIService: MockService!
 
         // ----------------------------------
-        //  MARK: - Recipe VM -
+        //  MARK: - Favorite VM -
         //
     override func setUp() {
         super.setUp()
@@ -92,6 +92,9 @@ class FavoriteViewModelTests: XCTestCase {
         
         recipeVM.loadData { error in
            _ =  self.mockAPIService.completeClosure
+            self.mockAPIService.mockrecipe = .failure(RecipeError.noRecipeFound)
+            _ = Favorite.all
+            Favorite.deleteAll()
            _ = FavoriteCellViewModel.init(name: "", secondName: ["String"], image: nil, duration: 0, numberOfPeople: 0, routingEntry: AlertRoutingEntry(message: "", title: ""))
         }
 
@@ -109,8 +112,8 @@ class FavoriteViewModelTests: XCTestCase {
         let favorites = Favorite(context: AppDelegate.viewContext)
     
         let recipe = Recipe.init(name: favorites.name ?? "lemon", imageURL: favorites.imageURL, url: favorites.url, numberOfPeople: favorites.people, duration: favorites.duration, ingredientsNeeded: [""], isFavorited: favorites.liked)
-
-      
+        
+        
         let recipes = RecipeCollection(recipes: [recipe])
         
         let recipeSection = FavoriteSection.init(collection: recipes)
@@ -120,6 +123,7 @@ class FavoriteViewModelTests: XCTestCase {
         mockAPIService.mockrecipe = .success([recipe])
 
         self.recipeVM.loadData { error in
+            
             XCTAssertFalse(recipeSection.cellsVM.isEmpty, "")
             self.recipeVM.remove(at: IndexPath(item: 0, section: 0))
             XCTAssertEqual(self.recipeVM.sections.count, 1)

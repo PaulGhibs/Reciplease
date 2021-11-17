@@ -13,9 +13,10 @@ class GreenButton: UITableViewCell {
     
     @IBOutlet weak var greenButton: UIButton!
     
+    // MARK: - Configure & cell pressed
 
     override func cellPressed(cellViewModel: CellViewModel, from controller: UIViewController) {
-        
+        // routing entry for going on recipe result view
         guard let routingEntry = cellViewModel.routingEntry,
               let navController = controller.navigationController else {
                   return
@@ -32,7 +33,7 @@ class GreenButton: UITableViewCell {
     }
     
     override func configure(cellViewModel : CellViewModel, from controller: UIViewController) {
-        
+        // connect button view and viewmodel
         guard let tableCVM = cellViewModel as? GreenButtonCellViewModel else {
             return
         }

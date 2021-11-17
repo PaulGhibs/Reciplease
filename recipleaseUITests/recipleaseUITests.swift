@@ -25,7 +25,7 @@ class recipleaseUITests: XCTestCase {
         app.tabBars.firstMatch.buttons.element(boundBy: 0).tap()
         app.tabBars.firstMatch.buttons.element(boundBy: 1).tap()
     }
-    
+
     func testSearchViewController() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
@@ -44,6 +44,26 @@ class recipleaseUITests: XCTestCase {
         app.buttons["Get Directions"].tap()
         
         XCTAssertFalse( tf.exists, "tf exists" )   // text field still exists
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+
+    func testEmptySearchViewController() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+        // search for translateTextfield
+        XCTAssert(app.textFields["ingredientsTextField"].exists, "test text field doesn't exist" )
+        let tf = app.textFields["ingredientsTextField"]
+        tf.tap()    // must give text field keyboard focus!
+        tf.typeText("sausages")
+        app.buttons["clear"].tap()
+        
+        app.buttons["Search for recipes"].tap()
+      
+        
+        
+        
+        XCTAssertTrue( tf.exists, "tf exists" )   // text field still exists
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 

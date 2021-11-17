@@ -7,7 +7,7 @@
 
 import Foundation
 
-// protocol to set up viewmodel
+// MARK: - ViewModel Protocol
 
 protocol ViewModel {
     //each viewmodel have section and load data function
@@ -30,7 +30,7 @@ extension ViewModel {
         }
         return self.sections[section].cellsVM.count
     }
-    
+    // each item is located to an indexPath
     func item(at indexPath: IndexPath) -> CellViewModel {
         return self.sections[indexPath.section].cellsVM[indexPath.row]
     }

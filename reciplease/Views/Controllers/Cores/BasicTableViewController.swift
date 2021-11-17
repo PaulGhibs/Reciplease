@@ -28,7 +28,7 @@ class BasicTableViewController: UITableViewController {
     
         // MARK: - Datasource / delegate
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // each view models function protocol is here and below
+        // vm functions protocols
         guard let vm = self.viewModel else {
             return 0
         }
@@ -39,12 +39,15 @@ class BasicTableViewController: UITableViewController {
         guard let vm = self.viewModel else {
             return 0
         }
-        
+        // vm functions protocols
+
         
         return vm.numberOfItems(in: section)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // vm functions protocols
+
         guard let cellVM = self.viewModel?.item(at: indexPath) else {
             return UITableViewCell()
         }
@@ -91,7 +94,7 @@ class BasicTableViewController: UITableViewController {
         guard let cellVM = self.viewModel?.item(at: indexPath) as? TableCellViewModel else {
             return 0
         }
-        // cell vm configure protocol
+        // cell vm table view section configure protocol
 
         return CGFloat(cellVM.height)
     }
@@ -129,7 +132,7 @@ class BasicTableViewController: UITableViewController {
     }
     
    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-            // cell vm delete func protocol
+        // cell vm delete func protocol
 
         guard let cellVM = self.viewModel?.item(at: indexPath) as? TableEditedCellViewModel else {
             return .none

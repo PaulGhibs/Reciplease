@@ -52,7 +52,7 @@ class TabBarViewController: UITabBarController {
         view a background color
         */
         let separator = UIView(frame: CGRect(
-        x: xPosition, y: 0, width: 0.5, height: height+15))
+        x: xPosition, y: 0, width: 0.5, height: height))
         separator.backgroundColor = UIColor.darkGray
         tabBar.insertSubview(separator, at: 1)
         }

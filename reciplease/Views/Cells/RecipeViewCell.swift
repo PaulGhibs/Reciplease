@@ -9,18 +9,17 @@ import UIKit
 import SDWebImage
 
 class RecipeViewCell: UITableViewCell {
+    // MARK: - Outlets
 
     @IBOutlet weak var firstHeader: UILabel!
-    
     @IBOutlet weak var secondText: UILabel!
-    
     @IBOutlet weak var imageBackground: UIImageView!
-    
     @IBOutlet weak var duration: UILabel!
-    
     @IBOutlet weak var numberOfPeople: UILabel!
     
-    
+
+    // MARK: - layouts
+
     override func layoutSubviews() {
         super.layoutSubviews()
         firstHeader.layer.shadowRadius = 5.0 //set shadow radius to your desired value.
@@ -29,11 +28,11 @@ class RecipeViewCell: UITableViewCell {
         firstHeader.layer.shadowOffset = CGSize(width: 10, height: 10)
         firstHeader.layer.shadowColor = UIColor.black.cgColor
         firstHeader.layer.masksToBounds = false
-
+        // images options
         imageBackground.contentMode = .scaleAspectFill
         imageBackground.clipsToBounds = true
         imageBackground.layer.cornerRadius = 10
-    
+        // duration & likes layers
         duration.layer.cornerRadius = 12
         self.duration.contentMode = .scaleAspectFit
         self.duration.layer.borderColor = UIColor.white.cgColor
@@ -41,14 +40,15 @@ class RecipeViewCell: UITableViewCell {
         numberOfPeople.layer.cornerRadius = 12
         numberOfPeople.layer.masksToBounds = true
     }
-    
+    // MARK: - Configure 
+
     
     override func configure(cellViewModel : CellViewModel, from controller: UIViewController) {
         guard let tableCVM = cellViewModel as? RecipesListCellViewModel else {
             return
         }
         
-        
+        // configure outlets from cell vm
         self.firstHeader.text = tableCVM.name
        
         for text in tableCVM.secondName {
@@ -63,7 +63,7 @@ class RecipeViewCell: UITableViewCell {
 
     }
     
-   
+   // formating minutes and seconds
     func formatMinuteSeconds(_ totalSeconds: Int) -> String {
 
             let minutes = Double(totalSeconds) / 60;
@@ -80,6 +80,7 @@ class RecipeViewCell: UITableViewCell {
               let navController = controller.navigationController else {
             return
         }
+        // routing for going on detail recipe
         
         let newRouting = Routing()
             

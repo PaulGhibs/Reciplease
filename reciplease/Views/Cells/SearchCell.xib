@@ -60,6 +60,7 @@
                     <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lo0-Yc-xfv">
                         <rect key="frame" x="252" y="275" width="52" height="36"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration" identifier="clear"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="52" id="TL1-sI-VNo"/>
                             <constraint firstAttribute="height" constant="36" id="UkH-1V-J9k"/>

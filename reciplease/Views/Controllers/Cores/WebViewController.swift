@@ -10,12 +10,9 @@ import WebKit
 
 
 class WebViewController: UIViewController {
-    
-
+    // MARK: - Outlets
     @IBOutlet weak var webView: WKWebView!
-    
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    
     
     // MARK: - Init viewmodels
 
@@ -30,7 +27,7 @@ class WebViewController: UIViewController {
         super.init(nibName: String(describing: WebViewController.self), bundle: nil)
     }
     
-    // view did load
+    // MARK: - ViewdidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         

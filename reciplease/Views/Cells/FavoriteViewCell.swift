@@ -9,17 +9,15 @@ import UIKit
 import SDWebImage
 
 class FavoriteViewCell: UITableViewCell {
+    // MARK: - Outlets
 
     @IBOutlet weak var firstHeader: UILabel!
-    
     @IBOutlet weak var secondText: UILabel!
-    
     @IBOutlet weak var imageBackground: UIImageView!
-    
     @IBOutlet weak var duration: UILabel!
-    
     @IBOutlet weak var numberOfPeople: UILabel!
-        
+    
+    // MARK: - layouts
     override func layoutSubviews() {
         super.layoutSubviews()
         firstHeader.layer.shadowRadius = 5.0 //set shadow radius to your desired value.
@@ -28,11 +26,11 @@ class FavoriteViewCell: UITableViewCell {
         firstHeader.layer.shadowOffset = CGSize(width: 10, height: 10)
         firstHeader.layer.shadowColor = UIColor.black.cgColor
         firstHeader.layer.masksToBounds = false
-
+        // images options
         imageBackground.contentMode = .scaleAspectFill
         imageBackground.clipsToBounds = true
         imageBackground.layer.cornerRadius = 10
-    
+        // likes & duration layer
         duration.layer.cornerRadius = 12
         self.duration.contentMode = .scaleAspectFit
         self.duration.layer.borderColor = UIColor.white.cgColor
@@ -42,12 +40,13 @@ class FavoriteViewCell: UITableViewCell {
      
     }
     
-    
+    // MARK: - Configure
     override func configure(cellViewModel : CellViewModel, from controller: UIViewController) {
         guard let tableCVM = cellViewModel as? FavoriteCellViewModel else {
             return
         }
-        
+        // configure outlets from cell vm
+
         
         self.firstHeader.text = tableCVM.name
        
@@ -65,22 +64,22 @@ class FavoriteViewCell: UITableViewCell {
     
    
     func formatMinuteSeconds(_ totalSeconds: Int) -> String {
-
+        // nice render for minutes and seconds in layer
             let minutes = Double(totalSeconds) / 60;
             let seconds = totalSeconds % 60;
-
             return String(format:"%02d:%02d", minutes, seconds);
     }
     
     
-    
+    // MARK: - CellPressed
+
 
     override func cellPressed(cellViewModel: CellViewModel, from controller: UIViewController) {
         guard let routingEntry = cellViewModel.routingEntry,
               let navController = controller.navigationController else {
             return
         }
-        
+        // routing detail recipe
         let newRouting = Routing()
             
         _ = newRouting

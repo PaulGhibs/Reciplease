@@ -6,6 +6,7 @@
 //
 
 import Foundation
+// MARK: - WebViewModel
 
 class WebViewModel {
     

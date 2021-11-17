@@ -10,7 +10,8 @@ import Foundation
 
 
 class SearchCell: UITableViewCell, UITextViewDelegate {
-    
+    // MARK: - Outlets
+
     @IBOutlet weak var homeImage: UIImageView!
     @IBOutlet weak var YourIngredients: UILabel!
     @IBOutlet weak var clearButton: UIButton!
@@ -22,17 +23,13 @@ class SearchCell: UITableViewCell, UITextViewDelegate {
             ingredientsLists.layer.cornerRadius = 10
         }
     }
-    
-    //created a string variable
-  
     var tempsIngredients = [String]()
-  
-    
-   
+    // MARK: - Actions
+
     @IBAction func clearAction(_ sender: UIButton) {
         self.tempsIngredients.removeAll()
         self.ingredientsLists.text = ""
-        
+        // reset all
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
@@ -44,20 +41,24 @@ class SearchCell: UITableViewCell, UITextViewDelegate {
             tempsIngredients.append(ingredients.text!)
             ingredientsLists.text = "-" + tempsIngredients.joined(separator: "\n-")
             ingredients.text = ""
-            // Notify viewModel that we have something in tempsIngredients
 
         }
-        
+        // Notify viewModel that we have something in tempsIngredients
+
         RecipesListViewModel.choosenIngredient = tempsIngredients.joined(separator: "\n-")
        
     }
     
   
-    
+    // MARK: - Configure
+
     override func configure(cellViewModel : CellViewModel, from controller: UIViewController) {
         guard let tableCVM = cellViewModel as? SearchCellViewModel else {
             return
         }
+        
+        // configure viewModel with each outlets
+
         titleHeader.text = tableCVM.titleHeader
         ingredients.placeholder = tableCVM.IngredientsList
         addButton.setTitle(tableCVM.buttonTitle, for: .normal)
@@ -66,6 +67,7 @@ class SearchCell: UITableViewCell, UITextViewDelegate {
         ingredientsLists.delegate = self
         clearButton.setTitle(tableCVM.clearbutton, for: .normal)
         homeImage.layer.cornerRadius = 20
+        // reset userdefaults when coming on cell 
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()

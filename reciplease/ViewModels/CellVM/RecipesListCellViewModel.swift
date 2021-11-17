@@ -6,6 +6,7 @@
 //
 
 import Foundation
+// MARK: - RecipeListCellViewModel
 
 class RecipesListCellViewModel: TableCellViewModel {
    
@@ -23,7 +24,7 @@ class RecipesListCellViewModel: TableCellViewModel {
     var nibName: String? = "RecipeViewCell"
     lazy var reuseIdentifier: String = String(describing: self)
  
-    /// Recipes instance
+    // Recipes instance
   
     var name : String
    
@@ -31,7 +32,8 @@ class RecipesListCellViewModel: TableCellViewModel {
     var image: URL?
     var duration : Float
     var numberOfPeople: Float
-  
+    // init name ingredients, images, duration and likes, routing entry
+
     init(name: String, secondName: [String], image: URL?, duration: Float, numberOfPeople: Float,  routingEntry : RoutingEntry) {
         self.name = name
         self.secondName = secondName

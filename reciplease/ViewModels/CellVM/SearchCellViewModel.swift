@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - SearchCellViewModel
 
 class SearchCellViewModel: TableCellViewModel {
    
@@ -32,7 +33,7 @@ class SearchCellViewModel: TableCellViewModel {
     var clearbutton: String
 
 
-    
+    // init ingredients clear button and title header
     init(name: String, title: String, clearButton: String ,titleHeader: String, IngredientsList: String, buttonTitle: String) {
         self.name = name
         self.title = title

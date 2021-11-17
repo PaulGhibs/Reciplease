@@ -8,6 +8,7 @@
 import Foundation
 
 
+// MARK: - GreenButtonCellViewModel
 
 class GreenButtonCellViewModel : TableCellViewModel {
 
@@ -26,7 +27,7 @@ class GreenButtonCellViewModel : TableCellViewModel {
  
     var title: String?
     
-    
+    // init title and routingentry 
     init(title : String, routingEntry : RoutingEntry?) {
         self.title = title
         self.routingEntry = routingEntry

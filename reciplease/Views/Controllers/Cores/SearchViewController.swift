@@ -8,7 +8,7 @@
 import UIKit
 
 class SearchViewController: BasicTableViewController {
-    
+    // hide title of back button
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.backItem?.title = "Reciplease"
 

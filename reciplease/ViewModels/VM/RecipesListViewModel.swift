@@ -6,13 +6,15 @@
 //
 
 import Foundation
+// MARK: - RecipeListViewModel
 
 class RecipesListViewModel : ViewModel {
+    // No back button
     var shouldDisplayBackButton = false
     var sections: [Section] = []
     var apiService : APIService?
   
-    // try notification post here
+    // get users ingredients tiped as a string
     static var choosenIngredient: String {
         get {
             return UserDefaults.standard.string(forKey: Ingredients.ingredients) ?? ""
@@ -22,14 +24,14 @@ class RecipesListViewModel : ViewModel {
         }
        
     }
-    
+    // recipe collection empty
     var recipes = RecipeCollection(recipes: [])
 
     init(apiService: APIService) {
         self.apiService = apiService
     }
     
-  
+    // is requesting
     var isLoading: Bool = false {
         didSet {
             self.updateLoadingStatus?()
@@ -39,18 +41,23 @@ class RecipesListViewModel : ViewModel {
     
     func loadData(callback: @escaping (Error?) -> ()) {
         self.isLoading = true
-
+        // api service protocol with typed ingredients
         _ = apiService?.requestRecipe(with: RecipesListViewModel.choosenIngredient) { (success, resource) in
+            // temps sections for append if success
             var tempSections: [Section] = []
             if success, let resource = resource {
-                
+                // parse resource as recipe collection
                 self.recipes = resource as! RecipeCollection
                 let currentCollectionSection = RecipeViewSection(collection : self.recipes)
+                // append temps sections with recipeviewsection collection parsed
                 tempSections.append(currentCollectionSection)
+                // define tempssections as sections
                 self.sections = tempSections
-                callback(RecipeError.noRecipeFound)
+                
 
             }
+            // callback no recipeFound if error
+            callback(RecipeError.noRecipeFound)
         }
         
     }

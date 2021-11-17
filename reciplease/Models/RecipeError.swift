@@ -8,13 +8,14 @@
 import Foundation
 
 
+// MARK: - Structure to manage error
 
 enum RecipeError: Error {
-    
+    // threes possibilities
     case  badURL
     case  noRecipeFound
     case  deletedFromFavorites
-    
+    // raised a message for each error as string
     func errorMessages() throws -> String {
         switch self {
         case .badURL:

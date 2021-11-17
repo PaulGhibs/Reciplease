@@ -8,7 +8,7 @@
 
 
 import Foundation
-// structure to manage data
+// MARK: - Structure to manage data
 
 struct RecipeCollection: Decodable {
     // array of recipe
@@ -19,7 +19,7 @@ struct RecipeCollection: Decodable {
     }
 }
 struct Recipe {
-    
+    // recipe struct with attributes
     let name: String
     let imageURL: URL?
     let url: URL?
@@ -27,7 +27,7 @@ struct Recipe {
     let duration: Float
     var ingredientsNeeded: [String]
     var isFavorited : Bool?
-    
+    // init each attribute
     init(name: String, imageURL: URL?, url: URL?, numberOfPeople: Float, duration : Float,  ingredientsNeeded: [String], isFavorited: Bool?) {
         self.name = name
         self.imageURL = imageURL
@@ -39,7 +39,7 @@ struct Recipe {
         
     }
 }
-// extension codable recipe
+// converting json struct to swift class
 extension Recipe: Codable {
     
     enum Rename: String, CodingKey {
@@ -52,7 +52,7 @@ extension Recipe: Codable {
         case ingredientsNeeded = "ingredientLines"
 
     }
-    // decode from json
+    // decode each codingkey from json
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Rename.self)
 
