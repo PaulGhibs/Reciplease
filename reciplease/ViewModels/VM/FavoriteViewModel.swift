@@ -5,7 +5,6 @@
 //  Created by Paul Ghibeaux on 23/10/2021.
 //
 
-
 import Foundation
 import CoreData
 // MARK: - FavoriteViewModel
@@ -25,14 +24,12 @@ class FavoriteViewModel: ViewModel {
         }
     }
     var updateLoadingStatus: (()->())?
-  
     func loadData(callback: @escaping (Error?) -> ()) {
         // temps sections & recipe for appending
         var tempSections: [Section] = []
         var tempsRecipe = [Recipe]()
         // for each entry in the entity fetch attributes
         for favorite in Favorite.all {
-        
             let name = favorite.name ?? ""
             let ingredients = favorite.ingredients
             let imageUrl = favorite.imageURL
@@ -46,8 +43,6 @@ class FavoriteViewModel: ViewModel {
             tempsRecipe.append(newrecipe)
          
         }
-        
-
         // append recipesfav as tempsrecipecollection
         let tempsRecipeCollection = RecipeCollection.init(recipes: tempsRecipe)
         self.recipesFav = tempsRecipeCollection
@@ -56,14 +51,11 @@ class FavoriteViewModel: ViewModel {
         // append tempssection with favoritesection filled with recipe fav
         let currentCollectionSection = FavoriteSection(collection : self.recipesFav)
         tempSections.append(currentCollectionSection)
-        
-        
         self.sections = tempSections
         // raise callback error if no recipe found in entity 
         callback(RecipeError.noRecipeFound)
     }
 
 }
-
 
 

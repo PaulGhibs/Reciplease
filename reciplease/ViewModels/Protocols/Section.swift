@@ -8,7 +8,6 @@
 import Foundation
  
 // MARK: - Section view models
-
 protocol Section {
     // each section have title, a position and array of cellvm
     var position: Int { get set }

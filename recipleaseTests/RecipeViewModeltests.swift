@@ -15,9 +15,9 @@ class RecipeViewModelTests: XCTestCase {
     var recipeVM: RecipesListViewModel!
     var mockAPIService: MockService!
 
-        // ----------------------------------
-        //  MARK: - Recipe VM -
-        //
+    // ----------------------------------
+    //  MARK: - Recipe VMTests -
+    //
     override func setUp() {
         super.setUp()
         mockAPIService = MockService()
@@ -41,7 +41,7 @@ class RecipeViewModelTests: XCTestCase {
             XCTAssertNotNil(choosenIngredient)
         }
         
-        // Assert
+        // then
         XCTAssert(mockAPIService!.loadDataIsCalled)
         XCTAssertNotNil(choosenIngredient)
     }
@@ -60,11 +60,11 @@ class RecipeViewModelTests: XCTestCase {
         //when fetching
         recipeVM.loadData { result in
             
-        XCTAssertFalse(loadingStatus)
+        XCTAssertTrue(loadingStatus)
         }
         
                 
-        // When finished fetching
+        // then finished fetching
         XCTAssertTrue( loadingStatus )
         
         wait(for: [expect], timeout: 1.0)
@@ -83,7 +83,7 @@ class RecipeViewModelTests: XCTestCase {
 
         mockAPIService.fetchFail(error: (RecipeError.badURL))
 
-        // Sut should display predefined error message
+        // then
         XCTAssertFalse(false, error.localizedDescription)
 
 
@@ -93,74 +93,62 @@ class RecipeViewModelTests: XCTestCase {
     func test_cell_view_model() {
         // Given
         let fakeerror = RecipeError.badURL
-        
+        // When
         recipeVM.loadData { error in
-            
             self.mockAPIService.fetchFail(error: fakeerror)
-
         }
 
-        // When
-        // Number of cell view model is equal to the number of product
+        
+        // then
         XCTAssertEqual( recipeVM.numberOfItems(in: 10), mockAPIService.fakerecipeTab.count )
         XCTAssertEqual( recipeVM.numberOfSections(), mockAPIService.fakerecipeTab.count )
 
     }
-    func testInvalidData() {
+    
+    func test_Invalid_Data() {
+        // given
         let rData = Data()
-       
-        
+    
         let parsedata: RecipeCollection = MockService.parse(rData)
-        
+        // when
         recipeVM.loadData { _ in
-            
+            // then
             XCTAssert(parsedata.recipes.isEmpty, "")
-            XCTAssert((self.recipeVM.numberOfItems(in: 1) != 0), "")
+            XCTAssertFalse((self.recipeVM.numberOfItems(in: 1) != 0), "")
         }
 
 
     }
 
     func test_reload_data() {
-
-        // Given A product
-      
-        //Given product
-        let rData = Data()
-       
-        
-        let recipe: RecipeCollection = RecipeRequest.parse(rData)
-
-
+        // given
+        let recipe: RecipeCollection = MockService.recipe
         let recipeSection = RecipeViewSection.init(collection: recipe)
         let mockrecipe: () = mockAPIService.mockrecipe = .failure(RecipeError.badURL)
-
+        // when
         self.recipeVM.loadData { error in
             _ = recipeSection.cellsVM
             _ = mockrecipe
+            // then
             XCTAssertEqual(self.recipeVM.sections.count, 0)
-            XCTAssertEqual(self.recipeVM.sections.count, 1)
+            XCTAssertEqual(self.recipeVM.sections.count, 0)
         }
 
 
 
     }
     
-    func test_reoad_data() {
-
-        // Given A product
-      
-        //Given product
+    func test_reload_with_Invalid_Data() {
+        // given
         let rData = Data()
-       
-        
         let recipe: RecipeCollection = RecipeRequest.parse(rData)
         
-
+        // when
         self.recipeVM.loadData { error in
+            // then
             self.mockAPIService.mockrecipe = .success(recipe.recipes)
-            XCTAssertEqual(self.recipeVM.sections.count, 1)
-            XCTAssertNotEqual(self.recipeVM.sections.count, 0)
+            XCTAssertFalse((self.recipeVM.sections.count != 0),"\( String(describing: error?.localizedDescription))")
+            XCTAssertNotEqual(self.recipeVM.sections.count, 2)
         }
 
 

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+// MARK: - DetailCellViewModel
 
 class DetailRecipeCellViewModel: TableCellViewModel {
     var routingEntry: RoutingEntry?
@@ -28,6 +29,8 @@ class DetailRecipeCellViewModel: TableCellViewModel {
     var url : URL?
     var favorites : Bool?
     
+    // init name ingredients, images, duration and likes, routing entry
+
     init(name: String, titleHeader: String, imageHeader: URL?, IngredientsList: [String], duration: Float, likes: Float, favorites : Bool?) {
         self.name = name
         self.titleHeader = titleHeader

@@ -32,6 +32,7 @@ class FavoriteViewController: BasicTableViewController {
         self.viewModel?.loadData { [weak self] _ in
             self?.registerCells()
             self?.tableView.reloadData()
+
            
         }
     }

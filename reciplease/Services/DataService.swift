@@ -27,13 +27,13 @@ class RecipeRequest: APIService {
         // make the api call with alamo if the adress is good
         
         AF.request(url, method: .get).responseJSON { response in
-            // parse data if sucess and callback true
+            // parse data if sucess and callback true with ressources
             switch response.result {
             case .success:
                 let resource: RecipeCollection = RecipeRequest.parse(response.data!)
                 print(resource)
                 callback(true, resource)
-                // print error if failure and callback false
+                // print error if failure and callback false with nil
             case .failure(let error):
                 print("Error : \(error)" )
                 

@@ -22,7 +22,6 @@ protocol TableCellViewModel: CellViewModel {
     var height: Float { get }
 }
 // MARK: - TableEditedCellVM Protocol herited from TableCellVM
-
 protocol TableEditedCellViewModel: TableCellViewModel {
     // Favorite cellviewmodel, the user can delete one from the favorite with completionedit function
     var canEdit : Bool { get }

@@ -14,11 +14,9 @@ class DetailVMTests: XCTestCase {
     var detailVM: DetailViewModel!
     var mockAPIService: MockService!
    
-   
-   
-        // ----------------------------------
-        //  MARK: - Search VM -
-        //
+   // ----------------------------------
+    //  MARK: - Detail VMTests-
+    //
     override func setUp() {
         super.setUp()
         detailVM = DetailViewModel(recipe: Recipe.init(name: "", imageURL: nil, url: nil, numberOfPeople: 0, duration: 0, ingredientsNeeded: [""], isFavorited: true))
@@ -31,20 +29,19 @@ class DetailVMTests: XCTestCase {
     }
     
     func test_fetch_vm() {
-        // Given
         
         // When
         detailVM.loadData {_ in
             XCTAssertNotNil(self.detailVM.sections)
         }
         
-        // Assert
+        // then
         XCTAssertNil(mockAPIService?.loadDataIsCalled)
     }
     
     func test_fetch_vm_failed() {
         
-        // Given a failed fetch with a certain failure
+        // Given
         let error = try? RecipeError.badURL.errorMessages()
         
         // When
@@ -52,7 +49,7 @@ class DetailVMTests: XCTestCase {
         
         mockAPIService?.fetchFail(error: (RecipeError.badURL))
         
-        // Sut should display predefined error message
+        // Then
         XCTAssertFalse(false, error.debugDescription)
 
     }

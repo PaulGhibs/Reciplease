@@ -12,10 +12,8 @@ import Foundation
 protocol ViewModel {
     //each viewmodel have section and load data function
     var sections: [Section] { get set }
-    
     func loadData(callback: @escaping (Error?) -> ())
     var shouldDisplayBackButton : Bool { get  }
-
 }
 
 extension ViewModel {

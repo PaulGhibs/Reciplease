@@ -7,11 +7,12 @@
 
 
 import Foundation
+// MARK: - EmptyCellViewModel
 
 class EmptyRecipeCellViewModel : TableCellViewModel {
     
     var height: Float {
-        return 300
+        return 350
     }
     
    

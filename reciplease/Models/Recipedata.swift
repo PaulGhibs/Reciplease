@@ -13,7 +13,7 @@ import Foundation
 struct RecipeCollection: Decodable {
     // array of recipe
     let recipes: [Recipe]
-
+    
     enum CodingKeys: String, CodingKey {
         case recipes = "hits"
     }
@@ -50,14 +50,14 @@ extension Recipe: Codable {
         case numberOfPeople = "yield"
         case duration = "totalTime"
         case ingredientsNeeded = "ingredientLines"
-
+        
     }
     // decode each codingkey from json
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Rename.self)
-
+        
         let recipe = try container.nestedContainer(keyedBy: Rename.self, forKey: .recipe)
-
+        
         name = try recipe.decode(String.self, forKey: .name)
         imageURL = try recipe.decode(URL.self, forKey: .imageURL)
         url = try recipe.decode(URL.self, forKey: .url)
@@ -70,6 +70,6 @@ extension Recipe: Codable {
 
 
 struct Ingredients {
-    // ingredients typed by users 
+    // ingredients typed by users
     static let ingredients = "ingredients"
 }

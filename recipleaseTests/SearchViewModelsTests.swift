@@ -28,13 +28,12 @@ class SearchVMTests: XCTestCase {
     }
     
     func test_fetch_vm() {
-        // Given
-        // When
+       
         homeVM.loadData {_ in
             XCTAssertNotNil(self.homeVM.sections)
         }
         
-        // Assert
+     
         XCTAssertNil(mockAPIService?.loadDataIsCalled)
     }
     
@@ -48,7 +47,7 @@ class SearchVMTests: XCTestCase {
         
         mockAPIService?.fetchFail(error: (RecipeError.noRecipeFound))
         
-        // Sut should display predefined error message
+        // then 
         XCTAssertFalse(false, error.debugDescription)
 
     }

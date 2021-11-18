@@ -28,7 +28,8 @@ class RecipeViewSection: Section {
             let empty = EmptyRecipeCellViewModel()
             cellsVM.append(empty)
         } else {
-    // for each recipe display a Recipelistcellviewmodel with name, images and others attributes
+            
+        // for each recipe display a Recipelistcellviewmodel with name, images and others attributes
             for recipe in collection.recipes {
                 let icone = recipe.imageURL
             

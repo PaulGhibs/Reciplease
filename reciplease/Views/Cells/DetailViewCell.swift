@@ -99,7 +99,7 @@ class DetailViewCell: UITableViewCell {
         NotificationCenter.default.post(name: .newLikedRecipe, object: tableCVM.favorites)
     
         if tableCVM.favorites == true {
-            self.likedButton.setImage(UIImage(named: "filled"), for: .normal)
+            likedButton.setImage(UIImage(named: "filled"), for: .normal)
         }
     
     }

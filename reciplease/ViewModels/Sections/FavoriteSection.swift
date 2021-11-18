@@ -17,19 +17,21 @@ class FavoriteSection: Section {
     
     var collection : RecipeCollection
 
-
+    // recipe collection init
     init(collection : RecipeCollection) {
         self.position = 0
         self.title = ""
-        
         self.cellsVM = [CellViewModel]()
         self.collection = collection
         
         if collection.recipes.count == 0 {
+            // if no recipes show the emptycellvm
+
             let empty = EmptyRecipeCellViewModel()
             cellsVM.append(empty)
         } else {
-            
+            // for each recipe display a Favoritecellviewmodel with name, images and others attributes
+
             for recipe in collection.recipes {
                 let icone = recipe.imageURL
             

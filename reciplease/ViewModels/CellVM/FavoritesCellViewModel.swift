@@ -25,7 +25,6 @@ class FavoriteCellViewModel: TableEditedCellViewModel {
     var nibName: String? = "FavoriteViewCell"
     lazy var reuseIdentifier: String = String(describing: self)
     
-    // Recipes instance as recipeslistcellvm
     
     var name : String
     

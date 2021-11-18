@@ -10,28 +10,26 @@ import Foundation
 import XCTest
 
 class MockService : APIService {
+    //MARK: - Properties
+
     var loadDataIsCalled = true
     var completeClosure: ((Result<[RecipeCollection], RecipeError>) -> Void)!
     var fakerecipeTab: [Recipe] = [Recipe]()
-    var recipeError: ((Error?)->())!
+    var recipeError: ((RecipeError?)->())!
     var mockrecipe: Result<[Recipe], RecipeError>?
     
     static let recipe = RecipeCollection(recipes: [])
 
+    //MARK: - methods from APIServiceProtocols
 
     func requestRecipe(with ingredients: String, callback: @escaping Callback) {
-        
-        do {
-            let _: URL! = try MockService.createURL(with: ingredients)
-
-        } catch {
-            return callback(false, ingredients)
-        }
+        let _: URL! = try? MockService.createURL(with: ingredients)
+        callback(false, nil)
+      
     }
     
     static func createURL(with ingredients: String) throws -> URL? {
-        let completeURL = "https://api.edamam.com/search?q=chicken&app_id=e18eed8d&app_key=211716f11ce4f2e390a5a84a0c0725eb&from=0&to=20" + ingredients
-        return URL(string: completeURL)
+        return try RecipeRequest.createURL(with: ingredients)
     }
     
     static func parse<RecipeCollection: Decodable>(_ data: Data) -> RecipeCollection {
@@ -43,9 +41,11 @@ class MockService : APIService {
             print("Unknown error")
         }
         
-        return self.recipe as! RecipeCollection
+        return recipe as! RecipeCollection
     }
     
+    
+    // Fetch Failed
     func fetchFail(error: RecipeError?) {
         guard error != nil else {
             return}
@@ -53,6 +53,10 @@ class MockService : APIService {
 
         
     }
+    
+    
+    
+    
     
     
 }
